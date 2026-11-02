@@ -246,7 +246,8 @@ export default function MapView() {
 
   return (
     <div className="flex h-full">
-      <div className="relative min-w-0 flex-1">
+      {/* isolate keeps Leaflet's high z-indexes (400–1000+) inside the map, so dialogs (z-50) open above it */}
+      <div className="relative isolate min-w-0 flex-1">
         <MapContainer center={CENTER} zoom={16} className="h-full w-full">
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
