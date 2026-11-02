@@ -75,7 +75,7 @@ function FootprintOverlays({ snapshot }: { snapshot: MapSnapshot }) {
         <FootprintRing
           key={ring.year}
           ring={ring}
-          label={i === 0 ? `Developed by ${ring.year}` : `Added by ${ring.year}`}
+          label={i === 0 ? `Grounds by ${ring.year}` : `Added by ${ring.year}`}
           fillOpacity={visible.get(ring.year)?.fillOpacity}
         />
       ))}
@@ -188,7 +188,7 @@ function Timeline({
 function FootprintLegend({ index }: { index: number }) {
   return (
     <Card className="absolute top-3 right-3 z-[1000] gap-1.5 bg-background/95 px-3 py-2.5 text-xs shadow-sm backdrop-blur">
-      <p className="font-medium">Developed by</p>
+      <p className="font-medium">Grounds by</p>
       {visibleRings(index).map((r) => (
         <div key={r.year} className="flex items-center gap-2 tabular-nums">
           <span className="relative size-2.5 overflow-hidden rounded-sm border border-chart-1">
