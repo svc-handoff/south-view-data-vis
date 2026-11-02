@@ -1,563 +1,1250 @@
 [
   {
-    "id": "person-1",
-    "name": "James A. Whitfield",
-    "birth": 1882,
-    "death": 1961,
-    "burial_year": 1961,
-    "section": "A",
-    "plot": "12",
-    "bio": "A prominent civic leader who championed voter registration and political empowerment in the local community for over four decades.",
+    "id": "charles-morgan",
+    "name": "Charles Henry Morgan",
+    "birth": null,
+    "death": 1886,
+    "burial_year": 1886,
+    "bio": "A South Carolina native, Charles Henry Morgan worked in Atlanta as a carriage trimmer before building a prosperous grocery business. He signed South-View's charter petition, bought three shares of its stock on December 6, 1886, and was buried there on December 17, 1886.",
     "notable": true,
-    "demographics": { "gender": "Male", "race": "Black", "occupation": "Civic leader" },
+    "demographics": {
+      "gender": "Male",
+      "race": "Black",
+      "occupation": "Carriage trimmer, grocer"
+    },
     "relations": [
-      { "target": "person-2", "type": "spouse" },
-      { "target": "person-3", "type": "friend" }
+      {
+        "target": "george-graham",
+        "type": "colleague"
+      },
+      {
+        "target": "albert-watts",
+        "type": "colleague"
+      },
+      {
+        "target": "robert-grant",
+        "type": "colleague"
+      },
+      {
+        "target": "john-render",
+        "type": "colleague"
+      }
     ],
-    "events": [
-      { "event_id": "event-3", "role": "Voter registration leader" },
-      { "event_id": "event-5", "role": "Community organizer" }
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), ch. 3, \"The Founders\": \"The Charter\" and \"Charles Henry Morgan\"",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "Georgia Institute of Technology, Building Memories project, \"South-View Cemetery\" (Jacqueline Jones Royster, with Prachi Mehta)",
+        "url": "https://leading-edge.iac.gatech.edu/building-memories/southview-cemetery"
+      },
+      {
+        "label": "Atlanta Daily World, William A. Fowlkes, \"Historic South View Cemetery Celebrates: Vast Expansions and Many Improvements Noted,\" April 21, 1946, p. 5 (Georgia Historic Newspapers)",
+        "url": "https://gahistoricnewspapers.galileo.usg.edu/lccn/sn82015425/1946-04-21/ed-1/seq-5/"
+      },
+      {
+        "label": "Edward R. Carter, The Black Side: A Partial History of the Business, Religious and Educational Side of the Negro in Atlanta, Ga. (Atlanta, 1894), p. 62 (sketch of Floyd H. Crumbly); Emory University Libraries copy on the Internet Archive",
+        "url": "https://archive.org/details/23685529.4746.emory.edu"
+      }
     ]
   },
   {
-    "id": "person-2",
-    "name": "Clara M. Whitfield",
-    "birth": 1887,
-    "death": 1952,
-    "burial_year": 1952,
-    "section": "A",
-    "plot": "13",
-    "bio": "Matriarch of a prominent local family. She supported community education efforts and raised a family of civic-minded leaders.",
-    "notable": false,
-    "demographics": { "gender": "Female", "race": "Black", "occupation": "Homemaker" },
-    "relations": [
-      { "target": "person-1", "type": "spouse" }
-    ],
-    "events": []
-  },
-  {
-    "id": "person-3",
-    "name": "William H. Mercer",
-    "birth": 1858,
-    "death": 1927,
-    "burial_year": 1927,
-    "section": "B",
-    "plot": "1",
-    "bio": "A self-made entrepreneur who built a successful business empire and became one of the community's wealthiest citizens.",
+    "id": "george-graham",
+    "name": "George Wesley Graham",
+    "birth": 1833,
+    "death": 1894,
+    "burial_year": 1894,
+    "bio": "George Wesley Graham, a carpenter, was elected in December 1870 as one of Atlanta's first two Black city council members and represented the Third Ward in 1871. He later ran a grocery and wood-and-coal business and signed South-View's 1886 charter petition.",
     "notable": true,
-    "demographics": { "gender": "Male", "race": "Black", "occupation": "Entrepreneur" },
+    "demographics": {
+      "gender": "Male",
+      "race": "Black",
+      "occupation": "Carpenter, city councilman"
+    },
     "relations": [
-      { "target": "person-4", "type": "spouse" },
-      { "target": "person-1", "type": "friend" }
+      {
+        "target": "albert-watts",
+        "type": "colleague"
+      },
+      {
+        "target": "robert-grant",
+        "type": "colleague"
+      },
+      {
+        "target": "charles-morgan",
+        "type": "colleague"
+      },
+      {
+        "target": "john-render",
+        "type": "colleague"
+      }
     ],
-    "events": [
-      { "event_id": "event-4", "role": "Founder" },
-      { "event_id": "event-2", "role": "Survivor and community rebuilder" }
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), ch. 3, \"The Founders\": \"The Charter\" and \"George Wesley Graham\"",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "Atlanta History Center, \"The Color Line: The Problem of the Centuries\" exhibition, \"After Reconstruction\"",
+        "url": "https://www.atlantahistorycenter.com/exhibitions/the-color-line-the-problem-of-the-centuries/after-reconstruction/"
+      },
+      {
+        "label": "Daily Atlanta Intelligencer, \"Municipal Government for 1871\" (list of councilmen and committees), January 31, 1871, p. 1 (Georgia Historic Newspapers)",
+        "url": "https://gahistoricnewspapers.galileo.usg.edu/lccn/sn89053738/1871-01-31/ed-1/seq-1/"
+      },
+      {
+        "label": "Atlanta Daily World, Dr. C. A. Bacote (Atlanta University), \"William Finch: Atlanta Negro Councilman,\" February 11, 1959, p. 1, continued p. 3 (Georgia Historic Newspapers)",
+        "url": "https://gahistoricnewspapers.galileo.usg.edu/lccn/sn82015425/1959-02-11/ed-1/seq-3/"
+      },
+      {
+        "label": "Atlanta Daily World, William A. Fowlkes, \"Historic South View Cemetery Celebrates: Vast Expansions and Many Improvements Noted,\" April 21, 1946, p. 5 (Georgia Historic Newspapers)",
+        "url": "https://gahistoricnewspapers.galileo.usg.edu/lccn/sn82015425/1946-04-21/ed-1/seq-5/"
+      },
+      {
+        "label": "Georgia Institute of Technology, Building Memories project, \"South-View Cemetery\" (Jacqueline Jones Royster, with Prachi Mehta)",
+        "url": "https://leading-edge.iac.gatech.edu/building-memories/southview-cemetery"
+      }
     ]
   },
   {
-    "id": "person-4",
-    "name": "Louisa P. Mercer",
+    "id": "robert-grant",
+    "name": "Rev. Robert Grant",
+    "birth": 1826,
+    "death": 1896,
+    "burial_year": 1896,
+    "bio": "Born about 1826 in Wilkes County, Rev. Robert Grant was a blacksmith and drayman who became founding pastor of Atlanta's Zion Hill Baptist Church in 1872. He signed South-View's 1886 charter petition and was buried there after his death in 1896.",
+    "notable": true,
+    "demographics": {
+      "gender": "Male",
+      "race": "Black",
+      "occupation": "Baptist minister"
+    },
+    "relations": [
+      {
+        "target": "george-graham",
+        "type": "colleague"
+      },
+      {
+        "target": "albert-watts",
+        "type": "colleague"
+      },
+      {
+        "target": "charles-morgan",
+        "type": "colleague"
+      },
+      {
+        "target": "john-render",
+        "type": "colleague"
+      }
+    ],
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), ch. 3, \"The Founders\": \"The Charter\" and \"Robert Grant\"",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "Georgia Institute of Technology, Building Memories project, \"South-View Cemetery\" (Jacqueline Jones Royster, with Prachi Mehta)",
+        "url": "https://leading-edge.iac.gatech.edu/building-memories/southview-cemetery"
+      },
+      {
+        "label": "The Christian Index (Atlanta), \"Theological and Normal Institute (Colored) -- Action of the Colored Baptists of Atlanta,\" September 7, 1876, p. 2 (Georgia Historic Newspapers)",
+        "url": "https://gahistoricnewspapers.galileo.usg.edu/lccn/2001233948/1876-09-07/ed-1/seq-2/"
+      },
+      {
+        "label": "Savannah Morning News, Atlanta dispatch \"Notes About Town,\" December 4, 1884, p. 1 (Georgia Historic Newspapers)",
+        "url": "https://gahistoricnewspapers.galileo.usg.edu/lccn/sn82015137/1884-12-04/ed-1/seq-1/"
+      }
+    ]
+  },
+  {
+    "id": "albert-watts",
+    "name": "Albert Watts",
+    "birth": 1843,
+    "death": 1903,
+    "burial_year": 1903,
+    "bio": "Albert Watts, a Clarke County native who ran a grocery on Fraser Street, signed South-View's 1886 charter petition and served as its first treasurer until his death in 1903. His son Lewis and grandson Albert Hawes Watts later led the cemetery association.",
+    "notable": true,
+    "demographics": {
+      "gender": "Male",
+      "race": "Black",
+      "occupation": "Grocer"
+    },
+    "relations": [
+      {
+        "target": "george-graham",
+        "type": "colleague"
+      },
+      {
+        "target": "robert-grant",
+        "type": "colleague"
+      },
+      {
+        "target": "charles-morgan",
+        "type": "colleague"
+      },
+      {
+        "target": "john-render",
+        "type": "colleague"
+      }
+    ],
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), ch. 3, \"The Founders\": \"The Charter\" and \"Albert Watts\" (also ch. 1 opening and Appendix entry \"Watts, Albert\")",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "Georgia Institute of Technology, Building Memories project, \"South-View Cemetery\" (Jacqueline Jones Royster, with Prachi Mehta)",
+        "url": "https://leading-edge.iac.gatech.edu/building-memories/southview-cemetery"
+      },
+      {
+        "label": "Atlanta Daily World, William A. Fowlkes, \"Historic South View Cemetery Celebrates: Vast Expansions and Many Improvements Noted,\" April 21, 1946, p. 5 (Georgia Historic Newspapers)",
+        "url": "https://gahistoricnewspapers.galileo.usg.edu/lccn/sn82015425/1946-04-21/ed-1/seq-5/"
+      },
+      {
+        "label": "Atlanta Daily World, Alice H. Washington, \"Spanish-American War Veteran Takes Pride in Job for 44 Years\" (South-View history), October 22, 1950, p. 2 (Georgia Historic Newspapers)",
+        "url": "https://gahistoricnewspapers.galileo.usg.edu/lccn/sn82015425/1950-10-22/ed-1/seq-2/"
+      },
+      {
+        "label": "Auburn Avenue Research Library, Atlanta Funeral Programs Collection (Digital Library of Georgia), \"A Celebration of Life Honoring Albert Hawes Watts, December 18, 1913 - November 20, 2001\"",
+        "url": "https://dlg.usg.edu/record/aarl_afpc_wattsalberthawes20011126"
+      }
+    ]
+  },
+  {
+    "id": "adrienne-herndon",
+    "name": "Adrienne McNeil Herndon",
     "birth": 1869,
     "death": 1910,
     "burial_year": 1910,
-    "section": "B",
-    "plot": "2",
-    "bio": "An accomplished educator and performer who taught at the local university and earned recognition in the arts community.",
+    "bio": "A Savannah native and Atlanta University graduate, Herndon taught elocution and drama there and staged the university's first Shakespeare production in 1905. In 1904 she made a Boston stage debut under the name Anne Du Bignon, and she designed the family's Herndon Home.",
     "notable": true,
-    "demographics": { "gender": "Female", "race": "Black", "occupation": "Educator and performer" },
+    "demographics": {
+      "gender": "Female",
+      "race": "Black",
+      "occupation": "Educator and actress"
+    },
     "relations": [
-      { "target": "person-3", "type": "spouse" }
+      {
+        "target": "alonzo-herndon",
+        "type": "spouse"
+      },
+      {
+        "target": "norris-herndon",
+        "type": "child"
+      }
     ],
-    "events": [
-      { "event_id": "event-2", "role": "Witness" }
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), ch. 6, \"Herndon: Simplicity of Design\"; also ch. 11, \"A Litany of Atlanta\", and \"A Selected Biographical Dictionary\", section H (\"Herndon, Adrienne McNeil\")",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "Southern Spaces (Emory University), Carole Merritt, \"African Americans in Atlanta: Adrienne Herndon, an Uncommon Woman\" (2004)",
+        "url": "https://southernspaces.org/2004/african-americans-atlanta-adrienne-herndon-uncommon-woman/"
+      },
+      {
+        "label": "New Georgia Encyclopedia, Alexa Henderson, \"Alonzo Herndon (1858-1927)\"",
+        "url": "https://www.georgiaencyclopedia.org/articles/business-economy/alonzo-herndon-1858-1927/"
+      },
+      {
+        "label": "Atlanta History Center, \"What Moves You?\" exhibition, \"Adrienne McNeil Herndon\"",
+        "url": "https://showcase.atlantahistorycenter.com/what-moves-you/artifacts/adrienne-mcneil-herndon"
+      }
     ]
   },
   {
-    "id": "person-5",
-    "name": "George T. Odom",
-    "birth": 1841,
-    "death": 1900,
-    "burial_year": 1900,
-    "section": "A",
-    "plot": "3",
-    "bio": "A founding member of the cemetery association. He helped establish this burial ground so that community members could be laid to rest with dignity.",
+    "id": "henry-mcneal-turner",
+    "name": "Bishop Henry McNeal Turner",
+    "birth": 1834,
+    "death": 1915,
+    "burial_year": 1915,
+    "bio": "Born free in South Carolina, Turner served as a Union Army chaplain, helped build the AME Church in Georgia, and was elected to the Georgia legislature in 1868. Elected an AME bishop in 1880, he later championed emigration to Africa; about 25,000 mourners attended his 1915 Atlanta funeral.",
     "notable": true,
-    "demographics": { "gender": "Male", "race": "Black", "occupation": "Civic leader" },
+    "demographics": {
+      "gender": "Male",
+      "race": "Black",
+      "occupation": "AME bishop, legislator"
+    },
     "relations": [
-      { "target": "person-6", "type": "colleague" }
+      {
+        "target": "edward-carter",
+        "type": "colleague"
+      }
     ],
-    "events": [
-      { "event_id": "event-1", "role": "Co-founder" }
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), ch. 12, \"Turner: A Noble and Indomitable Spirit\"; also ch. 6, \"A Beautiful Place for a Cemetery\"",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "New Georgia Encyclopedia, Stephen Angell, \"Henry McNeal Turner (1834-1915)\"",
+        "url": "https://www.georgiaencyclopedia.org/articles/arts-culture/henry-mcneal-turner-1834-1915/"
+      },
+      {
+        "label": "South Carolina Encyclopedia (University of South Carolina), \"Turner, Henry McNeal\"",
+        "url": "https://www.scencyclopedia.org/sce/entries/turner-henry-mcneal/"
+      },
+      {
+        "label": "Georgia Historical Society, historical marker \"South-View Cemetery\" (2016)",
+        "url": "https://georgiahistory.com/ghmi_marker_updated/south-view-cemetery/"
+      }
     ]
   },
   {
-    "id": "person-6",
-    "name": "Rev. Samuel L. Harding",
+    "id": "john-render",
+    "name": "Rev. John D. Render",
     "birth": 1845,
-    "death": 1905,
-    "burial_year": 1905,
-    "section": "A",
-    "plot": "7",
-    "bio": "One of the original founders of the cemetery. He helped organize the purchase of the original nine acres of land.",
+    "death": 1923,
+    "burial_year": 1923,
+    "bio": "Rev. John D. Render, an AME minister who earned his living as a drayman, signed South-View's 1886 charter petition and bought two shares of its stock. He later helped charter the Georgia Real Estate Loan and Trust Company and served as a Morris Brown College trustee.",
     "notable": true,
-    "demographics": { "gender": "Male", "race": "Black", "occupation": "Minister" },
+    "demographics": {
+      "gender": "Male",
+      "race": "Black",
+      "occupation": "Minister, drayman"
+    },
     "relations": [
-      { "target": "person-5", "type": "colleague" },
-      { "target": "person-7", "type": "friend" }
+      {
+        "target": "george-graham",
+        "type": "colleague"
+      },
+      {
+        "target": "albert-watts",
+        "type": "colleague"
+      },
+      {
+        "target": "robert-grant",
+        "type": "colleague"
+      },
+      {
+        "target": "charles-morgan",
+        "type": "colleague"
+      }
     ],
-    "events": [
-      { "event_id": "event-1", "role": "Co-founder" }
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), ch. 3, \"The Founders\": \"The Charter\" and \"John D. Render\" (also ch. 4, \"Early Leaders at South-View\")",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "Georgia Institute of Technology, Building Memories project, \"South-View Cemetery\" (Jacqueline Jones Royster, with Prachi Mehta)",
+        "url": "https://leading-edge.iac.gatech.edu/building-memories/southview-cemetery"
+      },
+      {
+        "label": "Atlanta Daily World, William A. Fowlkes, \"Historic South View Cemetery Celebrates: Vast Expansions and Many Improvements Noted,\" April 21, 1946, p. 5 (Georgia Historic Newspapers)",
+        "url": "https://gahistoricnewspapers.galileo.usg.edu/lccn/sn82015425/1946-04-21/ed-1/seq-5/"
+      },
+      {
+        "label": "Atlanta Georgian and News, \"A. M. E. Church Officers\" (A. M. E. Ministers' Union election), December 18, 1907, p. 8 (Georgia Historic Newspapers)",
+        "url": "https://gahistoricnewspapers.galileo.usg.edu/lccn/sn89053728/1907-12-18/ed-1/seq-8/"
+      },
+      {
+        "label": "Edward R. Carter, The Black Side: A Partial History of the Business, Religious and Educational Side of the Negro in Atlanta, Ga. (Atlanta, 1894), p. 50, \"I. O. of O. F. St. James Lodge No. 1455\"; Emory University Libraries copy on the Internet Archive",
+        "url": "https://archive.org/details/23685529.4746.emory.edu"
+      }
     ]
   },
   {
-    "id": "person-7",
-    "name": "Daniel R. Foster",
-    "birth": 1850,
-    "death": 1908,
-    "burial_year": 1908,
-    "section": "A",
-    "plot": "15",
-    "bio": "A minister and community leader who was instrumental in the early growth of the cemetery and expanding its reach.",
-    "notable": false,
-    "demographics": { "gender": "Male", "race": "Black", "occupation": "Minister" },
-    "relations": [
-      { "target": "person-6", "type": "friend" }
-    ],
-    "events": [
-      { "event_id": "event-1", "role": "Early supporter" }
-    ]
-  },
-  {
-    "id": "person-8",
-    "name": "Harriet B. Lawson",
-    "birth": 1872,
-    "death": 1964,
-    "burial_year": 1964,
-    "section": "C",
-    "plot": "22",
-    "bio": "Founder of the first local parent-teacher association. She was a tireless advocate for education and community welfare.",
+    "id": "alonzo-herndon",
+    "name": "Alonzo F. Herndon",
+    "birth": 1858,
+    "death": 1927,
+    "burial_year": 1927,
+    "bio": "Born into slavery in Walton County, Georgia, Herndon became a leading Atlanta barber and in 1905 bought a small mutual aid association that grew into the Atlanta Life Insurance Company. He also served as South-View's president and treasurer.",
     "notable": true,
-    "demographics": { "gender": "Female", "race": "Black", "occupation": "Educator and activist" },
+    "demographics": {
+      "gender": "Male",
+      "race": "Black",
+      "occupation": "Entrepreneur"
+    },
     "relations": [
-      { "target": "person-9", "type": "spouse" }
+      {
+        "target": "adrienne-herndon",
+        "type": "spouse"
+      },
+      {
+        "target": "norris-herndon",
+        "type": "child"
+      },
+      {
+        "target": "edward-carter",
+        "type": "colleague"
+      }
     ],
-    "events": [
-      { "event_id": "event-3", "role": "Education advocate" },
-      { "event_id": "event-5", "role": "Community leader" }
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), ch. 6, \"Herndon: Simplicity of Design\"; also ch. 4, \"Business Life on Auburn Avenue\", and ch. 1, \"The People\"",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "New Georgia Encyclopedia (Georgia Humanities / UGA Press), Alexa Henderson, \"Alonzo Herndon (1858-1927)\"",
+        "url": "https://www.georgiaencyclopedia.org/articles/business-economy/alonzo-herndon-1858-1927/"
+      },
+      {
+        "label": "New Georgia Encyclopedia, \"Atlanta Life Insurance Company\"",
+        "url": "https://www.georgiaencyclopedia.org/articles/business-economy/atlanta-life-insurance-company/"
+      },
+      {
+        "label": "Georgia Historical Society, historical marker \"South-View Cemetery\" (2016)",
+        "url": "https://georgiahistory.com/ghmi_marker_updated/south-view-cemetery/"
+      }
     ]
   },
   {
-    "id": "person-9",
-    "name": "Dr. Henry G. Lawson",
-    "birth": 1862,
-    "death": 1931,
-    "burial_year": 1931,
-    "section": "C",
-    "plot": "23",
-    "bio": "One of the area's first Black physicians. He was a prominent figure in the professional class and co-founded several community organizations.",
+    "id": "moses-amos",
+    "name": "Moses Amos",
+    "birth": 1866,
+    "death": 1928,
+    "burial_year": 1928,
+    "bio": "Moses Amos learned the drug trade as a boy and managed Butler, Slater & Co., an early Black-owned Atlanta pharmacy. In 1911 he became the first African American licensed as a druggist by Georgia's pharmacy board, and in 1914 he opened the Gate City Drug Store in Auburn Avenue's Odd Fellows Building.",
     "notable": true,
-    "demographics": { "gender": "Male", "race": "Black", "occupation": "Physician" },
+    "demographics": {
+      "gender": "Male",
+      "race": "Black",
+      "occupation": "Pharmacist"
+    },
     "relations": [
-      { "target": "person-8", "type": "spouse" },
-      { "target": "person-3", "type": "friend" }
+      {
+        "target": "alonzo-herndon",
+        "type": "colleague"
+      },
+      {
+        "target": "david-howard",
+        "type": "colleague"
+      }
     ],
-    "events": [
-      { "event_id": "event-2", "role": "Treated victims" }
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), ch. 13, \"Genealogy in the Cemetery Landscape\", section \"Holmes-Amos: Family Tree in Stone\"; also Biographical Dictionary entry \"Amos, Moses\"",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "Auburn Avenue Research Library (Atlanta-Fulton Public Library), \"Miles G. and Moses Amos papers\" finding aid (Internet Archive copy, 2025)",
+        "url": "https://web.archive.org/web/20250514053551/https://aafa.galileo.usg.edu/repositories/2/resources/111"
+      },
+      {
+        "label": "SaportaReport (John Ruch), \"Saving a historic Sweet Auburn sidewalk sign\"",
+        "url": "https://saportareport.com/saving-a-historic-sweet-auburn-sidewalk-sign/columnists/johnruch/"
+      },
+      {
+        "label": "APEX Museum, \"Sweet Auburn: Street of Pride\" exhibit page",
+        "url": "https://www.apexmuseum.org/sweet-auburn"
+      }
     ]
   },
   {
-    "id": "person-10",
-    "name": "Mary E. Tillman",
-    "birth": 1890,
-    "death": 1955,
-    "burial_year": 1955,
-    "section": "D",
-    "plot": "8",
-    "bio": "A schoolteacher who taught in the local segregated public schools for over 30 years, educating generations of children.",
-    "notable": false,
-    "demographics": { "gender": "Female", "race": "Black", "occupation": "Teacher" },
-    "relations": [
-      { "target": "person-11", "type": "sibling" }
-    ],
-    "events": [
-      { "event_id": "event-5", "role": "Educator" }
-    ]
-  },
-  {
-    "id": "person-11",
-    "name": "Robert L. Tillman",
-    "birth": 1885,
-    "death": 1942,
-    "burial_year": 1942,
-    "section": "D",
-    "plot": "9",
-    "bio": "A skilled carpenter and builder who helped construct several churches and schools in the local neighborhoods.",
-    "notable": false,
-    "demographics": { "gender": "Male", "race": "Black", "occupation": "Carpenter" },
-    "relations": [
-      { "target": "person-10", "type": "sibling" },
-      { "target": "person-12", "type": "spouse" }
-    ],
-    "events": [
-      { "event_id": "event-5", "role": "Builder" }
-    ]
-  },
-  {
-    "id": "person-12",
-    "name": "Ella Mae Tillman",
-    "birth": 1892,
-    "death": 1965,
-    "burial_year": 1965,
-    "section": "D",
-    "plot": "10",
-    "bio": "A domestic worker and church deaconess who organized mutual aid societies in her neighborhood, helping families during times of hardship.",
-    "notable": false,
-    "demographics": { "gender": "Female", "race": "Black", "occupation": "Domestic worker" },
-    "relations": [
-      { "target": "person-11", "type": "spouse" }
-    ],
-    "events": []
-  },
-  {
-    "id": "person-13",
-    "name": "Rev. Charles N. Pryor",
-    "birth": 1860,
-    "death": 1920,
-    "burial_year": 1920,
-    "section": "B",
-    "plot": "18",
-    "bio": "Pastor of a prominent local Baptist church. He was known for his sermons advocating for racial justice and economic self-sufficiency.",
-    "notable": false,
-    "demographics": { "gender": "Male", "race": "Black", "occupation": "Minister" },
-    "relations": [
-      { "target": "person-6", "type": "colleague" }
-    ],
-    "events": [
-      { "event_id": "event-2", "role": "Community shelter organizer" },
-      { "event_id": "event-1", "role": "Early supporter" }
-    ]
-  },
-  {
-    "id": "person-14",
-    "name": "Lucius D. Avery",
-    "birth": 1875,
-    "death": 1938,
-    "burial_year": 1938,
-    "section": "C",
-    "plot": "5",
-    "bio": "Owner of a successful Black-owned grocery store. He employed dozens of young men and women and was an active member of the local business league.",
-    "notable": false,
-    "demographics": { "gender": "Male", "race": "Black", "occupation": "Business owner" },
-    "relations": [
-      { "target": "person-15", "type": "spouse" },
-      { "target": "person-3", "type": "friend" }
-    ],
-    "events": [
-      { "event_id": "event-4", "role": "Early investor" }
-    ]
-  },
-  {
-    "id": "person-15",
-    "name": "Dorothy G. Avery",
-    "birth": 1880,
-    "death": 1950,
-    "burial_year": 1950,
-    "section": "C",
-    "plot": "6",
-    "bio": "A midwife who delivered hundreds of babies in the local community. Known for her tireless service, she often traveled on foot to reach families in need.",
-    "notable": false,
-    "demographics": { "gender": "Female", "race": "Black", "occupation": "Midwife" },
-    "relations": [
-      { "target": "person-14", "type": "spouse" }
-    ],
-    "events": []
-  },
-  {
-    "id": "person-16",
-    "name": "Prof. Arthur K. Redmond",
-    "birth": 1870,
-    "death": 1960,
-    "burial_year": 1960,
-    "section": "E",
-    "plot": "2",
-    "bio": "Professor of English and pedagogy at the local university for over 50 years. He was one of the first Black graduates of an Ivy League university.",
+    "id": "david-howard",
+    "name": "David T. Howard",
+    "birth": 1849,
+    "death": 1935,
+    "burial_year": 1935,
+    "bio": "Born enslaved in 1849, David T. Howard worked as a railroad porter before opening an Atlanta undertaking business in 1883. An original investor and board member of the South-View Cemetery Association, he donated the land for the school later named for him.",
     "notable": true,
-    "demographics": { "gender": "Male", "race": "Black", "occupation": "Professor" },
+    "demographics": {
+      "gender": "Male",
+      "race": "Black",
+      "occupation": "Undertaker"
+    },
     "relations": [
-      { "target": "person-1", "type": "friend" }
+      {
+        "target": "edward-carter",
+        "type": "colleague"
+      },
+      {
+        "target": "alonzo-herndon",
+        "type": "colleague"
+      }
     ],
-    "events": [
-      { "event_id": "event-3", "role": "Educator and intellectual" },
-      { "event_id": "event-5", "role": "Academic leader" }
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), ch. 5, \"Caring for the Dead\", section \"David T. Howard\"; also ch. 1, \"The History\" and \"The People\", and \"A Selected Biographical Dictionary\", H, \"Howard, David T. Sr.\"",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "Atlanta Journal-Constitution (David Gibson), \"David T. Howard: From Georgia slave to Atlanta philanthropist\" (Feb. 2, 2017)",
+        "url": "https://www.ajc.com/lifestyles/david-howard-from-georgia-slave-atlanta-philanthropist/BlsNK0GcM6WPKVGIf43SBK"
+      },
+      {
+        "label": "Library of Congress, Prints & Photographs, \"[David Tobias Howard, an undertaker, his mother Fannie Howard, and wife Ella Branner Howard, Atlanta, Georgia...]\" (1899 or 1900), W. E. B. Du Bois, African American Photographs Assembled for the 1900 Paris Exposition",
+        "url": "https://www.loc.gov/item/99472385/"
+      }
     ]
   },
   {
-    "id": "person-17",
-    "name": "Josephine R. Coates",
-    "birth": 1895,
-    "death": 1970,
-    "burial_year": 1970,
-    "section": "E",
-    "plot": "14",
-    "bio": "A seamstress and labor organizer who advocated for fair wages for domestic and garment workers during the 1930s and 1940s.",
-    "notable": false,
-    "demographics": { "gender": "Female", "race": "Black", "occupation": "Seamstress" },
-    "relations": [
-      { "target": "person-18", "type": "friend" }
-    ],
-    "events": [
-      { "event_id": "event-6", "role": "Organizer" }
+    "id": "alice-cary",
+    "name": "Alice Dugged Cary",
+    "birth": 1859,
+    "death": 1941,
+    "burial_year": 1941,
+    "bio": "Educator Alice Dugged Cary became principal of Atlanta's Mitchell Street School in 1886, the city's first Black woman principal. In 1921 she became the first librarian of the Auburn Branch, Atlanta's first free public library for African Americans, and led it until 1929.",
+    "notable": true,
+    "demographics": {
+      "gender": "Female",
+      "race": "Black",
+      "occupation": "Educator and librarian"
+    },
+    "relations": [],
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), \"A Selected Biographical Dictionary\", entry \"Cary, Alice Dugged\"",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "BlackPast.org (Matthew Griffis), \"Auburn Branch Library, Atlanta, Georgia (1921-1959)\"",
+        "url": "https://blackpast.org/african-american-history/auburn-branch-library-atlanta-georgia-1921-1959"
+      },
+      {
+        "label": "Atlanta-Fulton Public Library System, Auburn Avenue Research Library, \"History of AARL\"",
+        "url": "https://www.fulcolibrary.org/aarl/aarl-history/"
+      },
+      {
+        "label": "Black Caucus of the American Library Association, timeline: \"1921 - Alice Dugged Cary Appointed the First Librarian of the Auburn Carnegie Library\"",
+        "url": "https://www.bcala.org/timeline/alice-dugged-cary-appointed-the-first-librarian-of-the-auburn-carnegie-library"
+      }
     ]
   },
   {
-    "id": "person-18",
-    "name": "Thomas W. Fielding",
-    "birth": 1888,
+    "id": "edward-carter",
+    "name": "Rev. Edward R. Carter",
+    "birth": 1856,
+    "death": 1944,
+    "burial_year": 1944,
+    "bio": "Carter was pastor of Atlanta's Friendship Baptist Church for about six decades and an original stockholder and board member of South-View. His 1894 book The Black Side records the businesses, churches, and schools of Black Atlanta.",
+    "notable": true,
+    "demographics": {
+      "gender": "Male",
+      "race": "Black",
+      "occupation": "Minister and author"
+    },
+    "relations": [
+      {
+        "target": "alonzo-herndon",
+        "type": "colleague"
+      },
+      {
+        "target": "david-howard",
+        "type": "colleague"
+      },
+      {
+        "target": "henry-mcneal-turner",
+        "type": "colleague"
+      }
+    ],
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), ch. 13, \"Carter: 'A Noble Citizen, A Christian Gentleman'\"; also ch. 1, \"The History\", and ch. 4, \"South-View's Original Stockholders\"",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "Digital Library of Georgia / Auburn Avenue Research Library (Atlanta-Fulton Public Library), Edward Randolph Carter and Andrew Jackson Lewis collection, \"Biographical Information on E.R. Carter\"",
+        "url": "https://dlg.usg.edu/record/aarl_bss_bss01-003"
+      },
+      {
+        "label": "Digital Library of Georgia / Emory University Stuart A. Rose Library, catalog record for E. R. Carter, The Black Side: A Partial History of the Business, Religious and Educational Side of the Negro in Atlanta, Ga. (1894)",
+        "url": "https://dlg.usg.edu/record/geusc_afamlit_b508s"
+      },
+      {
+        "label": "Martin Luther King, Jr. Research and Education Institute (Stanford University), \"King, Sr., preaches commemoration service at Atlanta's Friendship Baptist Church\" (April 11, 1935)",
+        "url": "https://kinginstitute.stanford.edu/king-sr-preaches-commemoration-service-atlantas-friendship-baptist-church"
+      }
+    ]
+  },
+  {
+    "id": "benjamin-davis",
+    "name": "Benjamin Jefferson Davis Sr.",
+    "birth": null,
     "death": 1945,
     "burial_year": 1945,
-    "section": "D",
-    "plot": "20",
-    "bio": "A Pullman porter who used his position to distribute newspapers and information about civil rights organizing across the region.",
-    "notable": false,
-    "demographics": { "gender": "Male", "race": "Black", "occupation": "Pullman porter" },
-    "relations": [
-      { "target": "person-17", "type": "friend" },
-      { "target": "person-1", "type": "friend" }
-    ],
-    "events": [
-      { "event_id": "event-3", "role": "Information courier" },
-      { "event_id": "event-6", "role": "Union member" }
+    "bio": "Founder, editor and publisher of the Atlanta Independent, a Black weekly newspaper, and a leader of Georgia's Odd Fellows whose push helped build the Odd Fellows Building on Auburn Avenue. He was also active in Republican Party politics as a national committeeman.",
+    "notable": true,
+    "demographics": {
+      "gender": "Male",
+      "race": "Black",
+      "occupation": "Newspaper editor"
+    },
+    "relations": [],
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), ch. 10, \"Benjamin Jefferson Davis: Odd Fellows Grand Director\"; appendix entry \"Davis, Benjamin Jefferson\"",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "National Park Service, National Register of Historic Places Inventory-Nomination Form, \"Odd Fellows Building and Auditorium\" (Atlanta, 1975)",
+        "url": "https://npgallery.nps.gov/GetAsset/cccd3162-d0fa-46e3-9694-7af5919e3343"
+      },
+      {
+        "label": "Howard University, Moorland-Spingarn Research Center (Digital Howard), Black Press Archives, \"The Atlanta Independent\" (1915 issues)",
+        "url": "https://dh.howard.edu/atl_independent1915"
+      },
+      {
+        "label": "Martin Luther King, Jr. Research and Education Institute, Stanford University, \"Davis, Benjamin Jefferson, Jr.\"",
+        "url": "https://kinginstitute.stanford.edu/davis-benjamin-jefferson-jr"
+      }
     ]
   },
   {
-    "id": "person-19",
-    "name": "Walter S. Mercer Jr.",
+    "id": "walter-westmoreland",
+    "name": "1st Lt. Walter Drake Westmoreland",
+    "birth": 1920,
+    "death": 1944,
+    "burial_year": 1949,
+    "bio": "An Atlanta native who earned his pilot wings at Tuskegee in 1943, Westmoreland flew with the 332nd Fighter Group in World War II. He was shot down and killed over Hungary on October 13, 1944, returning from an escort mission to Blechhammer, Germany; his remains were later returned to Atlanta.",
+    "notable": true,
+    "demographics": {
+      "gender": "Male",
+      "race": "Black",
+      "occupation": "Tuskegee Airman"
+    },
+    "relations": [],
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), A Selected Biographical Dictionary, \"U - W\" (entry \"Westmoreland, Walter Drake\"); also ch. 1, \"Notable Residents of South-View's Historic Section\"",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "Commemorative Air Force, CAF Rise Above, \"1st Lt Walter Drake Westmoreland\"",
+        "url": "https://cafriseabove.org/walter-drake-westmoreland/"
+      },
+      {
+        "label": "St. Louis Post-Dispatch, Phillip O'Connor, \"Purple Heart medal quest widens for Tuskegee Airmen\" (Dec. 14, 2009), reproduced by Tuskegee University",
+        "url": "https://www.tuskegee.edu/Content/Uploads/Tuskegee/files/PurpleHeartMedalQuestTuskegeeAirmen.pdf"
+      }
+    ]
+  },
+  {
+    "id": "john-wesley-dobbs",
+    "name": "John Wesley Dobbs",
+    "birth": 1882,
+    "death": 1961,
+    "burial_year": 1961,
+    "bio": "John Wesley Dobbs worked 32 years as a railway mail clerk and led Georgia's Prince Hall Masons as Grand Master from 1932. Called the unofficial \"mayor of Auburn Avenue,\" he coined the name \"Sweet Auburn\" and co-founded the Atlanta Negro Voters League in 1946.",
+    "notable": true,
+    "demographics": {
+      "gender": "Male",
+      "race": "Black",
+      "occupation": "Civic and political leader"
+    },
+    "relations": [
+      {
+        "target": "irene-dobbs",
+        "type": "spouse"
+      },
+      {
+        "target": "mattiwilda-dobbs",
+        "type": "child"
+      }
+    ],
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), ch. 10, \"Symbols of Fraternity and Benevolence\": \"Prince Hall Freemasonry\" and \"The Broken Column Monument\"; also ch. 1, \"Twentieth-Century Residents\", and \"A Selected Biographical Dictionary\" (D)",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "New Georgia Encyclopedia, Matthew Bailey, \"John Wesley Dobbs (1882-1961)\"",
+        "url": "https://www.georgiaencyclopedia.org/articles/history-archaeology/john-wesley-dobbs-1882-1961/"
+      },
+      {
+        "label": "Civil Rights Digital Library (Digital Library of Georgia), authority record \"Dobbs, John Wesley, 1882-1961\"",
+        "url": "https://crdl.usg.edu/people/dobbs_john_wesley_1882_1961"
+      },
+      {
+        "label": "Digital Library of Georgia / Auburn Avenue Research Library, Atlanta Funeral Programs Collection, funeral program for Mattiwilda Dobbs Janzon (2015), with reprinted Atlanta Journal-Constitution obituary of Dec. 15, 2015",
+        "url": "https://dlg.usg.edu/record/aarl_afpc_janzonmattiwildadobbs20151218"
+      }
+    ]
+  },
+  {
+    "id": "ludie-andrews",
+    "name": "Ludie Clay Andrews",
+    "birth": 1875,
+    "death": 1969,
+    "burial_year": 1969,
+    "bio": "Trained at Spelman's MacVicar Hospital (1906), Ludie Andrews organized Grady Hospital's Municipal Training School for Colored Nurses in 1914 and, after a long legal fight with the state nursing board, became Georgia's first Black registered nurse. She led MacVicar Hospital from 1928 to 1948.",
+    "notable": true,
+    "demographics": {
+      "gender": "Female",
+      "race": "Black",
+      "occupation": "Nurse"
+    },
+    "relations": [],
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), ch. 1, \"Historical Overview: A Cemetery of Their Own\", section \"Twentieth-Century Residents\" (mention); and Biographical Dictionary entry \"Andrews, Ludie Clay\"",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "Georgia Women of Achievement, \"Ludie Clay Andrews\" (2018 honoree)",
+        "url": "https://www.georgiawomen.org/ludie-clay-andrews"
+      },
+      {
+        "label": "Georgia State University Library exhibit, \"The Art of Nursing & Caring for the Sick and Afflicted: History & Background\"",
+        "url": "https://exhibits.library.gsu.edu/grady-exhibit/history-background/"
+      },
+      {
+        "label": "Auburn Avenue Research Library, \"National Conclave of Grady Graduate Nurses collection\" finding aid (Internet Archive copy, 2024)",
+        "url": "https://web.archive.org/web/20240920072045/https://aafa.galileo.usg.edu/repositories/2/resources/125"
+      },
+      {
+        "label": "Collective Biographies of Women (University of Virginia), \"Ludie A. Andrews R.N.\" (citing Ada B. Thoms, Pathfinders, 1929)",
+        "url": "https://cbw.iath.virginia.edu/women_display.php?id=21155"
+      }
+    ]
+  },
+  {
+    "id": "irene-dobbs",
+    "name": "Irene Thompson Dobbs",
+    "birth": null,
+    "death": 1972,
+    "burial_year": 1972,
+    "bio": "Irene Ophelia Thompson, a native of Columbus, Mississippi, married John Wesley Dobbs in 1906; all six of their daughters, including soprano Mattiwilda Dobbs, graduated from Spelman College. She chaired the deaconess board of First Congregational Church and served on the Phyllis Wheatley YWCA board.",
+    "notable": true,
+    "demographics": {
+      "gender": "Female",
+      "race": "Black",
+      "occupation": "Church and civic leader"
+    },
+    "relations": [
+      {
+        "target": "john-wesley-dobbs",
+        "type": "spouse"
+      },
+      {
+        "target": "mattiwilda-dobbs",
+        "type": "child"
+      }
+    ],
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), \"A Selected Biographical Dictionary\" (D), entry \"Dobbs, John Wesley\" (Irene Ophelia Thompson Dobbs is profiled within it)",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "New Georgia Encyclopedia, Matthew Bailey, \"John Wesley Dobbs (1882-1961)\"",
+        "url": "https://www.georgiaencyclopedia.org/articles/history-archaeology/john-wesley-dobbs-1882-1961/"
+      },
+      {
+        "label": "New Georgia Encyclopedia, Diane Trap, \"Mattiwilda Dobbs (1925-2015)\"",
+        "url": "https://www.georgiaencyclopedia.org/articles/arts-culture/mattiwilda-dobbs-1925-2015/"
+      },
+      {
+        "label": "Digital Library of Georgia / Auburn Avenue Research Library, Atlanta Funeral Programs Collection, funeral program for Mattiwilda Dobbs Janzon (2015)",
+        "url": "https://dlg.usg.edu/record/aarl_afpc_janzonmattiwildadobbs20151218"
+      }
+    ]
+  },
+  {
+    "id": "alberta-king",
+    "name": "Alberta Williams King",
+    "birth": 1903,
+    "death": 1974,
+    "burial_year": 1974,
+    "bio": "The daughter of Ebenezer Baptist Church pastor A. D. Williams, she founded Ebenezer's choir and was its organist from 1932 to 1972. The mother of Martin Luther King Jr., she was shot and killed while playing the organ at a Sunday service on June 30, 1974.",
+    "notable": true,
+    "demographics": {
+      "gender": "Female",
+      "race": "Black",
+      "occupation": "Church musician"
+    },
+    "relations": [
+      {
+        "target": "martin-luther-king-sr",
+        "type": "spouse"
+      }
+    ],
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), A Selected Biographical Dictionary, \"I - K\" (entry \"Alberta Williams\", under King, Martin Luther Sr.); also ch. 6, \"Mausoleum Row\"",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "Martin Luther King, Jr. Research and Education Institute, Stanford University, King Encyclopedia, \"King, Alberta Williams\"",
+        "url": "https://kinginstitute.stanford.edu/king-alberta-williams"
+      },
+      {
+        "label": "Georgia Historical Society, \"Georgia Historical Society to Recognize South-View Cemetery with Historical Marker Dedication this Saturday\" (2016)",
+        "url": "https://georgiahistory.com/georgia-historical-society-to-recognize-south-view-cemetery-with-historical-marker-dedication-this-Saturday/"
+      },
+      {
+        "label": "Women in World History: A Biographical Encyclopedia (Gale), \"King, Alberta Williams (1903-1974)\", via Encyclopedia.com",
+        "url": "https://encyclopedia.com/women/encyclopedias-almanacs-transcripts-and-maps/king-alberta-williams-1903-1974"
+      },
+      {
+        "label": "Atlanta Journal-Constitution, Ernie Suggs, \"King family, Ebenezer gather to remember MLK's mother on 50th anniversary of her murder\" (July 1, 2024)",
+        "url": "https://www.ajc.com/uatl/king-family-ebenezer-gather-to-remember-mlks-mother-on-50th-anniversary-of-her-murder/DDBPZCAALRFMRFB4KJAVD43GOI"
+      }
+    ]
+  },
+  {
+    "id": "norris-herndon",
+    "name": "Norris B. Herndon",
     "birth": 1897,
     "death": 1977,
     "burial_year": 1977,
-    "section": "B",
-    "plot": "3",
-    "bio": "Son of William Mercer. He succeeded his father as president of the family insurance company and grew it into one of the largest Black-owned businesses in the region.",
+    "bio": "The only child of Alonzo and Adrienne Herndon, he earned a Harvard MBA in 1921 and led Atlanta Life Insurance Company as president from 1927 to 1973. He created the Herndon Foundation in 1950 and served as vice president and board chair of South-View.",
     "notable": true,
-    "demographics": { "gender": "Male", "race": "Black", "occupation": "Insurance executive" },
+    "demographics": {
+      "gender": "Male",
+      "race": "Black",
+      "occupation": "Insurance executive"
+    },
     "relations": [
-      { "target": "person-3", "type": "child" }
+      {
+        "target": "alonzo-herndon",
+        "type": "parent"
+      },
+      {
+        "target": "adrienne-herndon",
+        "type": "parent"
+      },
+      {
+        "target": "jesse-hill",
+        "type": "colleague"
+      }
     ],
-    "events": [
-      { "event_id": "event-4", "role": "President and successor" },
-      { "event_id": "event-5", "role": "Business leader" }
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), ch. 6, \"Herndon: Simplicity of Design\"; also ch. 4, \"Business Life on Auburn Avenue\", and \"A Selected Biographical Dictionary\", section H (\"Herndon, Norris Bumstead\")",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "BlackPast.org, Euell A. Dixon, \"Norris Bumstead Herndon (1897-1977)\"",
+        "url": "https://blackpast.org/african-american-history/norris-bumstead-herndon-1897-1977/"
+      },
+      {
+        "label": "Harvard Business School, Baker Library Special Collections, \"Agents of Change\" exhibit, \"Norris Bumstead Herndon\"",
+        "url": "https://www.library.hbs.edu/special-collections-and-archives/exhibits/aasu/student-pioneers/norris-bumstead-herndon"
+      },
+      {
+        "label": "New Georgia Encyclopedia, \"Atlanta Life Insurance Company\"",
+        "url": "https://www.georgiaencyclopedia.org/articles/business-economy/atlanta-life-insurance-company/"
+      },
+      {
+        "label": "Digital Library of Georgia / Auburn Avenue Research Library, Atlanta Funeral Programs Collection, \"Funeral rites for Norris Bumstead Herndon\" (June 9, 1977)",
+        "url": "https://dlg.usg.edu/record/aarl_afpc_herndonnorrisbumstead19770609"
+      }
     ]
   },
   {
-    "id": "person-20",
-    "name": "Estelle V. Monroe",
-    "birth": 1885,
-    "death": 1969,
-    "burial_year": 1969,
-    "section": "C",
-    "plot": "30",
-    "bio": "A pioneering librarian who managed the local branch library, making it a vital resource for the community during segregation.",
-    "notable": false,
-    "demographics": { "gender": "Female", "race": "Black", "occupation": "Librarian" },
+    "id": "martin-luther-king-sr",
+    "name": "Rev. Martin Luther King Sr.",
+    "birth": 1899,
+    "death": 1984,
+    "burial_year": 1984,
+    "bio": "King was pastor of Ebenezer Baptist Church for 44 years and an early civil rights leader in Atlanta's NAACP and Civic and Political League, leading a voter-registration march to City Hall and a campaign for equal pay for Black teachers. He was the father of Martin Luther King Jr.",
+    "notable": true,
+    "demographics": {
+      "gender": "Male",
+      "race": "Black",
+      "occupation": "Minister, civil rights leader"
+    },
     "relations": [
-      { "target": "person-8", "type": "friend" },
-      { "target": "person-16", "type": "colleague" }
+      {
+        "target": "alberta-king",
+        "type": "spouse"
+      }
     ],
-    "events": [
-      { "event_id": "event-5", "role": "Cultural steward" }
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), A Selected Biographical Dictionary, \"I - K\" (entry \"King, Martin Luther Sr.\"); also ch. 6, \"Mausoleum Row\", and ch. 11, \"Martin Luther King Jr.\"",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "Georgia Historical Society, historical marker \"South-View Cemetery\" (erected 2016)",
+        "url": "https://georgiahistory.com/ghmi_marker_updated/south-view-cemetery/"
+      },
+      {
+        "label": "Martin Luther King, Jr. Research and Education Institute, Stanford University, King Encyclopedia, \"King, Martin Luther, Sr.\"",
+        "url": "https://kinginstitute.stanford.edu/king-martin-luther-sr"
+      },
+      {
+        "label": "UPI Archives, \"The Rev. Martin Luther King Sr., the eloquent black...\" (Nov. 11, 1984)",
+        "url": "https://www.upi.com/Archives/1984/11/11/The-Rev-Martin-Luther-King-Sr-the-eloquent-black/6585468997200/"
+      },
+      {
+        "label": "Civil Rights Digital Library (University System of Georgia), \"King, Martin Luther, Sr., 1899-1984\"",
+        "url": "https://crdl.usg.edu/people/king_martin_luther_sr_1899_1984"
+      }
     ]
   },
   {
-    "id": "person-21",
-    "name": "Rev. Peter J. Simmons",
-    "birth": 1863,
-    "death": 1914,
-    "burial_year": 1914,
-    "section": "A",
-    "plot": "25",
-    "bio": "Pastor of a major Baptist church and a leading voice in the post-Reconstruction community. He organized relief efforts after the 1906 unrest.",
-    "notable": false,
-    "demographics": { "gender": "Male", "race": "Black", "occupation": "Minister" },
-    "relations": [
-      { "target": "person-13", "type": "colleague" },
-      { "target": "person-6", "type": "friend" }
-    ],
-    "events": [
-      { "event_id": "event-2", "role": "Relief organizer" },
-      { "event_id": "event-1", "role": "Early supporter" }
+    "id": "lorimer-milton",
+    "name": "Lorimer D. Milton",
+    "birth": null,
+    "death": 1986,
+    "burial_year": 1986,
+    "bio": "Lorimer D. Milton led Citizens Trust Bank as president from 1938 until 1971 and co-owned the Yates and Milton drugstores; he also taught at Morehouse College. He served on the South-View Cemetery Association board, including as its first vice president.",
+    "notable": true,
+    "demographics": {
+      "gender": "Male",
+      "race": "Black",
+      "occupation": "Banker"
+    },
+    "relations": [],
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), \"A Selected Biographical Dictionary\" (L - M), entry \"Milton, Lorimer Douglas\"; also ch. 4, \"The Business of Death\": \"1960s - Seventy-Fifth Anniversary\" and \"1970s - Ninetieth Anniversary\"; ch. 1, \"The People\" (memorial to board members)",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "New Georgia Encyclopedia, \"Citizens Trust Bank\"",
+        "url": "https://www.georgiaencyclopedia.org/articles/business-economy/citizens-trust-bank/"
+      },
+      {
+        "label": "Digital Library of Georgia, Living Atlanta oral history collection (Atlanta History Center, MSS 637), \"Oral history interview with L. D. (Lorimer Douglas) Milton, 1979 June 23\"",
+        "url": "https://dlg.usg.edu/record/geh_livatl_ahc-637-103-003"
+      },
+      {
+        "label": "Georgia Institute of Technology Archives, Ivan Allen Jr. Digital Collection, \"Interview with L. D. Milton\" (Ronald H. Bayor, 1985)",
+        "url": "https://ivanallen.iac.gatech.edu/artifacts/items/show/408"
+      },
+      {
+        "label": "Howard University, Office of the Secretary, \"Historical List of Howard University Trustees: Alpha Order\" (updated Aug. 2024)",
+        "url": "https://secretary.howard.edu/sites/secretary.howard.edu/files/2024-11/Historical%20List%20of%20Trustees_Alpha%20Order.pdf"
+      }
     ]
   },
   {
-    "id": "person-22",
-    "name": "Hattie R. Pendleton",
-    "birth": 1880,
-    "death": 1960,
-    "burial_year": 1960,
-    "section": "D",
-    "plot": "15",
-    "bio": "An educator and suffragist who fought for both women's rights and racial equality. She was active in the local federation of women's clubs.",
-    "notable": false,
-    "demographics": { "gender": "Female", "race": "Black", "occupation": "Educator and suffragist" },
-    "relations": [
-      { "target": "person-8", "type": "friend" },
-      { "target": "person-10", "type": "colleague" }
-    ],
-    "events": [
-      { "event_id": "event-3", "role": "Women's voter advocate" },
-      { "event_id": "event-5", "role": "Community organizer" }
+    "id": "eldren-bailey",
+    "name": "Eldren M. Bailey",
+    "birth": 1903,
+    "death": 1987,
+    "burial_year": 1987,
+    "bio": "A plasterer by trade, Eldren Bailey made whitewashed cement grave markers for Atlanta's Black funeral homes from the 1920s, many of them at South-View. From 1945 he filled the yard of his Rockwell Street home with self-taught cement and plaster sculptures.",
+    "notable": true,
+    "demographics": {
+      "gender": "Male",
+      "race": "Black",
+      "occupation": "Gravestone maker, artist"
+    },
+    "relations": [],
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), ch. 7, \"Vernacular Memorial Traditions\", section \"The Gravestone Art of Eldren Bailey\"",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "SPACES Archives, \"Eldren M. Bailey (1903 - 1987)\"",
+        "url": "https://spacesarchives.org/explore/search-the-online-collection/eldren-m-bailey/"
+      },
+      {
+        "label": "Souls Grown Deep Foundation, \"Eldren M. Bailey\" (essay by Paul Arnett)",
+        "url": "https://www.soulsgrowndeep.org/artist/eldren-m-bailey"
+      }
     ]
   },
   {
-    "id": "person-23",
-    "name": "Moses J. Kirkland",
-    "birth": 1848,
-    "death": 1903,
-    "burial_year": 1903,
-    "section": "A",
-    "plot": "9",
-    "bio": "A formerly enslaved man who became a successful brick mason after Emancipation. He helped build several local churches and was among the first buried at the cemetery.",
-    "notable": false,
-    "demographics": { "gender": "Male", "race": "Black", "occupation": "Brick mason" },
-    "relations": [
-      { "target": "person-5", "type": "friend" },
-      { "target": "person-24", "type": "spouse" }
-    ],
-    "events": [
-      { "event_id": "event-1", "role": "Early community member" }
+    "id": "grace-towns-hamilton",
+    "name": "Grace Towns Hamilton",
+    "birth": 1907,
+    "death": 1992,
+    "burial_year": 1992,
+    "bio": "Grace Towns Hamilton led the Atlanta Urban League from 1943 and in 1965 became the first African American woman elected to the Georgia General Assembly, representing a mid-Atlanta district for nearly two decades. She was a principal architect of Atlanta's 1973 city charter.",
+    "notable": true,
+    "demographics": {
+      "gender": "Female",
+      "race": "Black",
+      "occupation": "Legislator, activist"
+    },
+    "relations": [],
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), ch. 1, \"Twentieth-Century Residents\", and \"A Selected Biographical Dictionary\" (H), entry \"Hamilton, Grace Towns\"",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "New Georgia Encyclopedia, Lorraine Nelson Spritzer and Jean B. Bergmark, \"Grace Towns Hamilton (1907-1992)\"",
+        "url": "https://www.georgiaencyclopedia.org/articles/history-archaeology/grace-towns-hamilton-1907-1992/"
+      },
+      {
+        "label": "BlackPast.org, Matt VanHouten, \"Grace Towns Hamilton (1907-1992)\"",
+        "url": "https://www.blackpast.org/african-american-history/hamilton-grace-towns-1907-1992/"
+      },
+      {
+        "label": "DeKalb County Clerk of Superior Court, \"The Clerk's Black History Series: Grace Towns Hamilton\" (2022)",
+        "url": "https://www.dksuperiorclerk.com/mt-content/uploads/2022/02/black-history-series-grace-towns-hamilton.pdf"
+      }
     ]
   },
   {
-    "id": "person-24",
-    "name": "Fannie L. Kirkland",
-    "birth": 1855,
-    "death": 1918,
-    "burial_year": 1918,
-    "section": "A",
-    "plot": "10",
-    "bio": "Wife of Moses Kirkland and a laundress who helped fund the construction of a local Baptist church through her earnings.",
-    "notable": false,
-    "demographics": { "gender": "Female", "race": "Black", "occupation": "Laundress" },
-    "relations": [
-      { "target": "person-23", "type": "spouse" }
-    ],
-    "events": []
-  },
-  {
-    "id": "person-25",
-    "name": "Dr. Charles H. Benton",
-    "birth": 1870,
-    "death": 1935,
-    "burial_year": 1935,
-    "section": "C",
-    "plot": "12",
-    "bio": "A dentist who practiced in the main commercial district and was a founding member of the local NAACP chapter. He used his office as a meeting place for organizing.",
-    "notable": false,
-    "demographics": { "gender": "Male", "race": "Black", "occupation": "Dentist" },
-    "relations": [
-      { "target": "person-9", "type": "colleague" },
-      { "target": "person-3", "type": "friend" }
-    ],
-    "events": [
-      { "event_id": "event-3", "role": "NAACP organizer" },
-      { "event_id": "event-5", "role": "Commercial district professional" }
-    ]
-  },
-  {
-    "id": "person-26",
-    "name": "Willie Mae Stokes",
+    "id": "william-holmes-borders",
+    "name": "Rev. William Holmes Borders",
     "birth": 1905,
-    "death": 1968,
-    "burial_year": 1968,
-    "section": "E",
-    "plot": "8",
-    "bio": "A gospel singer and choir director whose powerful voice filled churches across the West Side. She trained a generation of young singers in the tradition of sacred music.",
-    "notable": false,
-    "demographics": { "gender": "Female", "race": "Black", "occupation": "Gospel singer" },
-    "relations": [
-      { "target": "person-12", "type": "friend" },
-      { "target": "person-27", "type": "sibling" }
-    ],
-    "events": [
-      { "event_id": "event-5", "role": "Cultural contributor" }
-    ]
-  },
-  {
-    "id": "person-27",
-    "name": "Samuel T. Stokes",
-    "birth": 1900,
-    "death": 1958,
-    "burial_year": 1958,
-    "section": "E",
-    "plot": "9",
-    "bio": "A janitor at the local university who quietly facilitated meetings between students and civil rights organizers. His behind-the-scenes support enabled many activist gatherings.",
-    "notable": false,
-    "demographics": { "gender": "Male", "race": "Black", "occupation": "Janitor" },
-    "relations": [
-      { "target": "person-26", "type": "sibling" },
-      { "target": "person-16", "type": "friend" }
-    ],
-    "events": [
-      { "event_id": "event-3", "role": "Meeting facilitator" }
-    ]
-  },
-  {
-    "id": "person-28",
-    "name": "Clarence B. Yates",
-    "birth": 1878,
-    "death": 1940,
-    "burial_year": 1940,
-    "section": "D",
-    "plot": "4",
-    "bio": "A blacksmith and farrier who ran one of the last horse-shoeing operations in the area as the city transitioned to automobiles.",
-    "notable": false,
-    "demographics": { "gender": "Male", "race": "Black", "occupation": "Blacksmith" },
-    "relations": [
-      { "target": "person-11", "type": "friend" },
-      { "target": "person-29", "type": "spouse" }
-    ],
-    "events": [
-      { "event_id": "event-6", "role": "Skilled tradesman" }
-    ]
-  },
-  {
-    "id": "person-29",
-    "name": "Pearl A. Yates",
-    "birth": 1883,
-    "death": 1962,
-    "burial_year": 1962,
-    "section": "D",
-    "plot": "5",
-    "bio": "A cook at a Black-owned restaurant in the commercial district. She was known for her generosity, often feeding those who couldn't pay during the Depression years.",
-    "notable": false,
-    "demographics": { "gender": "Female", "race": "Black", "occupation": "Cook" },
-    "relations": [
-      { "target": "person-28", "type": "spouse" },
-      { "target": "person-15", "type": "friend" }
-    ],
-    "events": [
-      { "event_id": "event-5", "role": "Commercial district worker" }
-    ]
-  },
-  {
-    "id": "person-30",
-    "name": "Rev. Edward R. Copeland",
-    "birth": 1858,
-    "death": 1944,
-    "burial_year": 1944,
-    "section": "B",
-    "plot": "22",
-    "bio": "Pastor of Friendship Baptist Church for over 40 years and author of a chronicle of local Black life. He was a towering figure in the area's religious and intellectual circles.",
+    "death": 1993,
+    "burial_year": 1993,
+    "bio": "Pastor of Wheat Street Baptist Church from 1937 to 1988, Borders helped win the hiring of Atlanta's first Black police officers and led the 1957 bus protest that desegregated the city's buses. His church built Wheat Street Gardens, a church-run housing project for low-income residents.",
     "notable": true,
-    "demographics": { "gender": "Male", "race": "Black", "occupation": "Minister and author" },
+    "demographics": {
+      "gender": "Male",
+      "race": "Black",
+      "occupation": "Minister, civil rights leader"
+    },
+    "relations": [],
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), A Selected Biographical Dictionary, \"B\" (entry \"Borders, William Holmes\"); also ch. 1, \"Twentieth-Century Residents\", and ch. 13, \"Stovall: 'In Gratitude'\"",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "New Georgia Encyclopedia, Edward A. Hatfield, \"William Holmes Borders (1905-1993)\"",
+        "url": "https://www.georgiaencyclopedia.org/articles/arts-culture/william-holmes-borders-1905-1993/"
+      },
+      {
+        "label": "Martin Luther King, Jr. Research and Education Institute, Stanford University, King Encyclopedia, \"Borders, William Holmes, Sr.\"",
+        "url": "https://kinginstitute.stanford.edu/borders-william-holmes-sr"
+      },
+      {
+        "label": "Unlocking the Airwaves (University of Maryland / NEH), \"Borders, William Holmes, 1905-1993\"",
+        "url": "https://www.unlockingtheairwaves.org/people/Q8012448/"
+      }
+    ]
+  },
+  {
+    "id": "fred-bennette",
+    "name": "Rev. Fred C. Bennette Jr.",
+    "birth": 1928,
+    "death": 1994,
+    "burial_year": 1994,
+    "bio": "A key SCLC organizer and aide to Martin Luther King Jr., Bennette coordinated the 1960 sit-in campaign to desegregate Rich's department store and was the first director of SCLC's Operation Breadbasket. He later advised Jimmy Carter and Andrew Young and directed security at the King Center.",
+    "notable": true,
+    "demographics": {
+      "gender": "Male",
+      "race": "Black",
+      "occupation": "Civil rights leader"
+    },
+    "relations": [],
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), A Selected Biographical Dictionary, \"B\" (entry \"Bennette, Fred C. Jr.\"); also ch. 1, \"Twentieth-Century Residents\"",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "Georgia House of Representatives, H.R. 1711 (2025-2026 session), \"Honoring the life and memory of Reverend Fred C. Bennette, Jr.\"",
+        "url": "https://www.legis.ga.gov/api/legislation/document/20252026/246055"
+      },
+      {
+        "label": "Atlanta History Center, Boyd Lewis Photographs (via Digital Library of Georgia), \"Andrew Young's Congressional Campaign\" (Nov. 7, 1972)",
+        "url": "https://dlg.usg.edu/record/geh_byd_2796"
+      },
+      {
+        "label": "Atlanta History Center, Boyd Lewis Photographs (via Digital Library of Georgia), \"Martin Luther King, Jr. Birthday Observance\" (Jan. 15, 1976)",
+        "url": "https://dlg.usg.edu/record/geh_byd_1776"
+      }
+    ]
+  },
+  {
+    "id": "albert-hawes-watts",
+    "name": "Albert Hawes Watts",
+    "birth": 1913,
+    "death": 2001,
+    "burial_year": 2001,
+    "bio": "Grandson of South-View co-founder Albert Watts, he began at the cemetery digging graves, became secretary-treasurer in 1948 and president-treasurer in 1977, and led it until his death. Henderson records he was the first African American on the American Cemetery Association board.",
+    "notable": true,
+    "demographics": {
+      "gender": "Male",
+      "race": "Black",
+      "occupation": "Cemetery executive"
+    },
     "relations": [
-      { "target": "person-13", "type": "colleague" },
-      { "target": "person-1", "type": "friend" },
-      { "target": "person-21", "type": "friend" }
+      {
+        "target": "lorimer-milton",
+        "type": "colleague"
+      }
     ],
-    "events": [
-      { "event_id": "event-2", "role": "Community voice and chronicler" },
-      { "event_id": "event-5", "role": "Religious leader" }
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), ch. 3, \"Albert Watts\"; also ch. 4, \"1940s – Sixtieth Anniversary\" and \"1970s – Ninetieth Anniversary\"; ch. 6, \"Twentieth-Century Cemetery Trends\"",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "Auburn Avenue Research Library, Atlanta Funeral Programs Collection (Digital Library of Georgia), \"A Celebration of Life Honoring Albert Hawes Watts\" (funeral program, Nov. 26, 2001)",
+        "url": "https://dlg.usg.edu/record/aarl_afpc_wattsalberthawes20011126"
+      },
+      {
+        "label": "South-View Cemetery Association, \"Our History\"",
+        "url": "https://southviewcemetery.com/our-history/"
+      },
+      {
+        "label": "Georgia Institute of Technology, Building Memories project (Jacqueline Jones Royster), \"South-View Cemetery: The Oldest African American Controlled Burial Ground in Atlanta, Georgia\"",
+        "url": "https://leading-edge.iac.gatech.edu/building-memories/southview-cemetery"
+      }
+    ]
+  },
+  {
+    "id": "jesse-hill",
+    "name": "Jesse Hill Jr.",
+    "birth": 1926,
+    "death": 2012,
+    "burial_year": 2012,
+    "bio": "Jesse Hill Jr. joined Atlanta Life Insurance Company as an actuary in 1949 and led it as president and CEO from 1973. He was the first African American member of the Georgia Board of Regents and the first Black president of the Atlanta Chamber of Commerce.",
+    "notable": true,
+    "demographics": {
+      "gender": "Male",
+      "race": "Black",
+      "occupation": "Insurance executive"
+    },
+    "relations": [
+      {
+        "target": "herman-russell",
+        "type": "friend"
+      }
+    ],
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), ch. 1, \"Historical Overview\", section \"Notable Twenty-First Century Residents\"; and \"A Selected Biographical Dictionary\", H, \"Hill, Jesse\"",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "New Georgia Encyclopedia, \"Jesse Hill\" (Barton Myers)",
+        "url": "https://www.georgiaencyclopedia.org/articles/business-economy/jesse-hill-1927-2012"
+      },
+      {
+        "label": "Atlanta Journal-Constitution, \"Jesse Hill Jr., 86: Advised King, Carter, Atlanta mayors\" (Dec. 2012)",
+        "url": "https://www.ajc.com/news/local-obituaries/jesse-hill-advised-king-carter-atlanta-mayors/oQB3Hbtzx5yfICpPH2OuoL"
+      },
+      {
+        "label": "SaportaReport (Maria Saporta), \"Hundreds of Atlantans honor Jesse Hill Jr. at his memorial service\" (Dec. 21, 2012)",
+        "url": "https://saportareport.com/?p=22306"
+      }
+    ]
+  },
+  {
+    "id": "asa-yancey",
+    "name": "Dr. Asa G. Yancey Sr.",
+    "birth": 1916,
+    "death": 2013,
+    "burial_year": 2013,
+    "bio": "Surgeon Asa G. Yancey Sr. was the first African American physician on staff at Grady Memorial Hospital and the first African American faculty member at Emory's medical school, where he started Georgia's first accredited surgical training program for African Americans.",
+    "notable": true,
+    "demographics": {
+      "gender": "Male",
+      "race": "Black",
+      "occupation": "Surgeon"
+    },
+    "relations": [],
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), ch. 1, \"Historical Overview\", section \"Notable Twenty-First Century Residents\"; and \"A Selected Biographical Dictionary\", Y, \"Yancey, Asa Greenwood\"",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "Emory University School of Medicine, Department of Surgery, \"A Long and Distinguished Career\" (Asa G. Yancey biography)",
+        "url": "https://med.emory.edu/departments/surgery/education/general-surgery-residency/asa-yancey-bio.html"
+      },
+      {
+        "label": "Atlanta Journal-Constitution (Michelle E. Shaw), \"Dr. Asa G. Yancey Sr., 96: First black Grady doctor\" (Mar. 14, 2013)",
+        "url": "https://www.ajc.com/news/local-obituaries/asa-yancey-first-black-grady-doctor/4nfyZRb5fxWPCOSE2EMfJP"
+      }
+    ]
+  },
+  {
+    "id": "herman-russell",
+    "name": "Herman J. Russell",
+    "birth": 1930,
+    "death": 2014,
+    "burial_year": 2014,
+    "bio": "Herman J. Russell bought his first property as a teenager and built his father's plastering business into H. J. Russell & Company, which helped build Atlanta landmarks such as the Georgia Dome. He also funded civil rights work and endowed entrepreneurship programs at Atlanta colleges.",
+    "notable": true,
+    "demographics": {
+      "gender": "Male",
+      "race": "Black",
+      "occupation": "Construction entrepreneur"
+    },
+    "relations": [
+      {
+        "target": "jesse-hill",
+        "type": "friend"
+      }
+    ],
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), ch. 1, \"Historical Overview\", section \"Notable Twenty-First Century Residents\"; and \"A Selected Biographical Dictionary\", N - R, \"Russell, Herman Jerome\"",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "New Georgia Encyclopedia, \"Herman J. Russell\" (Wesley Chenault)",
+        "url": "https://www.georgiaencyclopedia.org/articles/business-economy/herman-j-russell-1930-2014"
+      },
+      {
+        "label": "Georgia Public Broadcasting (Bradley George), \"Construction Business Icon Herman J. Russell Passes Away\" (Nov. 17, 2014)",
+        "url": "https://gpb.org/news/2014/11/17/construction-business-icon-herman-j-russell-passes-away"
+      },
+      {
+        "label": "Engineering News-Record (Debra K. Rubin), \"African-American Builder Herman Russell, 83, Was Industry Success Story\" (Dec. 9, 2014)",
+        "url": "https://www.enr.com/articles/7679-african-american-builder-herman-russell-83-was-industry-success-story"
+      },
+      {
+        "label": "The Atlanta Inquirer via NNPA, reprinted in The Seattle Medium (John B. Smith Sr.), \"Atlanta's 'Founding Father' Herman J. Russell Dies\" (Nov. 18, 2014)",
+        "url": "https://seattlemedium.com/atlantas-founding-father-herman-j-russell-dies"
+      }
+    ]
+  },
+  {
+    "id": "mattiwilda-dobbs",
+    "name": "Mattiwilda Dobbs",
+    "birth": 1925,
+    "death": 2015,
+    "burial_year": 2015,
+    "bio": "Atlanta-born coloratura soprano Mattiwilda Dobbs became the first African American to sing a principal role at Milan's La Scala in 1953. After her 1956 Metropolitan Opera debut as Gilda in Rigoletto, she became the first Black woman offered a long-term contract by the Met.",
+    "notable": true,
+    "demographics": {
+      "gender": "Female",
+      "race": "Black",
+      "occupation": "Operatic soprano"
+    },
+    "relations": [
+      {
+        "target": "john-wesley-dobbs",
+        "type": "parent"
+      },
+      {
+        "target": "irene-dobbs",
+        "type": "parent"
+      }
+    ],
+    "events": [],
+    "sources": [
+      {
+        "label": "D L Henderson, South-View: An African American City of the Dead (2018), ch. 1, \"Notable Twenty-First Century Residents\", and \"A Selected Biographical Dictionary\" (D), entry \"Dobbs, Mattiwilda\"",
+        "url": "https://search.worldcat.org/search?q=bn:9780998577203"
+      },
+      {
+        "label": "New Georgia Encyclopedia, Diane Trap, \"Mattiwilda Dobbs (1925-2015)\"",
+        "url": "https://www.georgiaencyclopedia.org/articles/arts-culture/mattiwilda-dobbs-1925-2015/"
+      },
+      {
+        "label": "Digital Library of Georgia / Auburn Avenue Research Library, Atlanta Funeral Programs Collection, \"A Celebration of the Life of Mattiwilda Dobbs Janzon, July 11, 1925 - December 8, 2015\" (includes reprinted Atlanta Journal-Constitution obituary, Dec. 15, 2015)",
+        "url": "https://dlg.usg.edu/record/aarl_afpc_janzonmattiwildadobbs20151218"
+      }
     ]
   }
 ]

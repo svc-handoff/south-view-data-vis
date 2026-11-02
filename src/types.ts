@@ -17,16 +17,20 @@ export interface EventLink {
 export interface Individual {
   id: string
   name: string
-  birth: number
+  /** null when no source gives a birth year */
+  birth: number | null
   death: number
   burial_year: number
-  section: string
-  plot: string
+  /** Only set when a source gives the burial location */
+  section?: string
+  plot?: string
   bio: string
   notable: boolean
   demographics: Demographics
   relations: Relation[]
   events: EventLink[]
+  /** At least three credible sources for the bio (Henderson first) */
+  sources: Source[]
 }
 
 export interface CemeteryEvent {

@@ -1,4 +1,4 @@
-import { UserIcon } from 'lucide-react'
+import { ExternalLinkIcon, UserIcon } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -13,6 +13,10 @@ import {
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { individuals } from '@/data'
 import type { Individual, MapSnapshot } from '@/types'
+
+function lifespan(person: Individual) {
+  return person.birth === null ? `d. ${person.death}` : `${person.birth}–${person.death}`
+}
 
 function Stat({ label, value, suffix }: { label: string; value: string | number; suffix?: string }) {
   return (
@@ -29,19 +33,41 @@ function Stat({ label, value, suffix }: { label: string; value: string | number;
 function FigureDialog({ person, onClose }: { person: Individual | null; onClose: () => void }) {
   return (
     <Dialog open={person !== null} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-md">
         {person && (
           <>
             <DialogHeader>
               <DialogTitle>{person.name}</DialogTitle>
               <DialogDescription>
-                {person.birth}–{person.death} · {person.demographics.occupation}
+                {lifespan(person)} · {person.demographics.occupation}
               </DialogDescription>
             </DialogHeader>
             <p className="text-sm leading-relaxed text-muted-foreground">{person.bio}</p>
-            <p className="text-xs text-muted-foreground">
-              Section {person.section}, Plot {person.plot}
-            </p>
+            {person.section && person.plot && (
+              <p className="text-xs text-muted-foreground">
+                Section {person.section}, Plot {person.plot}
+              </p>
+            )}
+            {person.sources.length > 0 && (
+              <div>
+                <h4 className="mb-1 text-xs font-medium text-muted-foreground">Sources</h4>
+                <ul className="space-y-1">
+                  {person.sources.map((src) => (
+                    <li key={src.label}>
+                      <a
+                        href={src.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline text-xs underline-offset-4 hover:underline"
+                      >
+                        {src.label}
+                        <ExternalLinkIcon className="ml-1 inline size-3 text-muted-foreground" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </>
         )}
       </DialogContent>
@@ -49,7 +75,16 @@ function FigureDialog({ person, onClose }: { person: Individual | null; onClose:
   )
 }
 
-export default function MapSidebar({ snapshot, label }: { snapshot: MapSnapshot; label: string }) {
+export default function MapSidebar({
+  snapshot,
+  label,
+  present,
+}: {
+  snapshot: MapSnapshot
+  label: string
+  /** The last snapshot stands for today, so it lists everyone buried since */
+  present: boolean
+}) {
   const [selected, setSelected] = useState<Individual | null>(null)
 
   // Only show notables who are already buried by this snapshot year
@@ -57,8 +92,8 @@ export default function MapSidebar({ snapshot, label }: { snapshot: MapSnapshot;
     () =>
       snapshot.notable_figures
         .map((id) => individuals.find((p) => p.id === id))
-        .filter((p): p is Individual => p !== undefined && p.death <= snapshot.year),
-    [snapshot],
+        .filter((p): p is Individual => p !== undefined && (present || p.burial_year <= snapshot.year)),
+    [snapshot, present],
   )
 
   const { gender, avg_age_at_death, cemetery_acreage, historical_context } = snapshot.demographics
@@ -141,7 +176,7 @@ export default function MapSidebar({ snapshot, label }: { snapshot: MapSnapshot;
                   <span className="min-w-0">
                     <span className="block truncate text-sm font-medium">{person.name}</span>
                     <span className="block truncate text-xs font-normal text-muted-foreground">
-                      {person.birth}–{person.death} · {person.demographics.occupation}
+                      {lifespan(person)} · {person.demographics.occupation}
                     </span>
                   </span>
                 </Button>

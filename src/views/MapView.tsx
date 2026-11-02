@@ -278,7 +278,7 @@ export default function MapView() {
           onTogglePlay={togglePlay}
         />
       </div>
-      <MapSidebar snapshot={snapshot} label={snapshotLabel(snapshot, index === LAST)} />
+      <MapSidebar snapshot={snapshot} label={snapshotLabel(snapshot, index === LAST)} present={index === LAST} />
     </div>
   )
 }

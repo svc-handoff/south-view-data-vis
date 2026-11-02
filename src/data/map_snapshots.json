@@ -2,7 +2,7 @@
   {
     "year": 1888,
     "total_burials": 48,
-    "notable_figures": ["person-5"],
+    "notable_figures": ["charles-morgan", "george-graham", "robert-grant", "albert-watts", "adrienne-herndon", "henry-mcneal-turner", "john-render", "alonzo-herndon", "moses-amos", "david-howard", "alice-cary", "edward-carter", "benjamin-davis", "walter-westmoreland", "john-wesley-dobbs", "ludie-andrews", "irene-dobbs", "alberta-king", "norris-herndon", "martin-luther-king-sr", "lorimer-milton", "eldren-bailey", "grace-towns-hamilton", "william-holmes-borders", "fred-bennette", "albert-hawes-watts", "jesse-hill", "asa-yancey", "herman-russell", "mattiwilda-dobbs"],
     "demographics": {
       "gender": { "Male": 30, "Female": 18 },
       "avg_age_at_death": 42,
@@ -19,7 +19,7 @@
   {
     "year": 1902,
     "total_burials": 145,
-    "notable_figures": ["person-5", "person-6"],
+    "notable_figures": ["charles-morgan", "george-graham", "robert-grant", "albert-watts", "adrienne-herndon", "henry-mcneal-turner", "john-render", "alonzo-herndon", "moses-amos", "david-howard", "alice-cary", "edward-carter", "benjamin-davis", "walter-westmoreland", "john-wesley-dobbs", "ludie-andrews", "irene-dobbs", "alberta-king", "norris-herndon", "martin-luther-king-sr", "lorimer-milton", "eldren-bailey", "grace-towns-hamilton", "william-holmes-borders", "fred-bennette", "albert-hawes-watts", "jesse-hill", "asa-yancey", "herman-russell", "mattiwilda-dobbs"],
     "demographics": {
       "gender": { "Male": 88, "Female": 57 },
       "avg_age_at_death": 44,
@@ -42,7 +42,7 @@
   {
     "year": 1909,
     "total_burials": 145,
-    "notable_figures": ["person-5", "person-6"],
+    "notable_figures": ["charles-morgan", "george-graham", "robert-grant", "albert-watts", "adrienne-herndon", "henry-mcneal-turner", "john-render", "alonzo-herndon", "moses-amos", "david-howard", "alice-cary", "edward-carter", "benjamin-davis", "walter-westmoreland", "john-wesley-dobbs", "ludie-andrews", "irene-dobbs", "alberta-king", "norris-herndon", "martin-luther-king-sr", "lorimer-milton", "eldren-bailey", "grace-towns-hamilton", "william-holmes-borders", "fred-bennette", "albert-hawes-watts", "jesse-hill", "asa-yancey", "herman-russell", "mattiwilda-dobbs"],
     "demographics": {
       "gender": { "Male": 88, "Female": 57 },
       "avg_age_at_death": 44,
@@ -67,7 +67,7 @@
   {
     "year": 1944,
     "total_burials": 1180,
-    "notable_figures": ["person-5", "person-6", "person-3", "person-4", "person-9", "person-13"],
+    "notable_figures": ["charles-morgan", "george-graham", "robert-grant", "albert-watts", "adrienne-herndon", "henry-mcneal-turner", "john-render", "alonzo-herndon", "moses-amos", "david-howard", "alice-cary", "edward-carter", "benjamin-davis", "walter-westmoreland", "john-wesley-dobbs", "ludie-andrews", "irene-dobbs", "alberta-king", "norris-herndon", "martin-luther-king-sr", "lorimer-milton", "eldren-bailey", "grace-towns-hamilton", "william-holmes-borders", "fred-bennette", "albert-hawes-watts", "jesse-hill", "asa-yancey", "herman-russell", "mattiwilda-dobbs"],
     "demographics": {
       "gender": { "Male": 660, "Female": 520 },
       "avg_age_at_death": 52,
@@ -99,7 +99,7 @@
   {
     "year": 1957,
     "total_burials": 1180,
-    "notable_figures": ["person-5", "person-6", "person-3", "person-4", "person-9", "person-13"],
+    "notable_figures": ["charles-morgan", "george-graham", "robert-grant", "albert-watts", "adrienne-herndon", "henry-mcneal-turner", "john-render", "alonzo-herndon", "moses-amos", "david-howard", "alice-cary", "edward-carter", "benjamin-davis", "walter-westmoreland", "john-wesley-dobbs", "ludie-andrews", "irene-dobbs", "alberta-king", "norris-herndon", "martin-luther-king-sr", "lorimer-milton", "eldren-bailey", "grace-towns-hamilton", "william-holmes-borders", "fred-bennette", "albert-hawes-watts", "jesse-hill", "asa-yancey", "herman-russell", "mattiwilda-dobbs"],
     "demographics": {
       "gender": { "Male": 660, "Female": 520 },
       "avg_age_at_death": 52,
@@ -142,7 +142,7 @@
   {
     "year": 1977,
     "total_burials": 4200,
-    "notable_figures": ["person-5", "person-6", "person-3", "person-4", "person-9", "person-8", "person-1", "person-16", "person-2"],
+    "notable_figures": ["charles-morgan", "george-graham", "robert-grant", "albert-watts", "adrienne-herndon", "henry-mcneal-turner", "john-render", "alonzo-herndon", "moses-amos", "david-howard", "alice-cary", "edward-carter", "benjamin-davis", "walter-westmoreland", "john-wesley-dobbs", "ludie-andrews", "irene-dobbs", "alberta-king", "norris-herndon", "martin-luther-king-sr", "lorimer-milton", "eldren-bailey", "grace-towns-hamilton", "william-holmes-borders", "fred-bennette", "albert-hawes-watts", "jesse-hill", "asa-yancey", "herman-russell", "mattiwilda-dobbs"],
     "demographics": {
       "gender": { "Male": 2250, "Female": 1950 },
       "avg_age_at_death": 62,
