@@ -46,6 +46,7 @@ export interface SnapshotDemographics {
 
 export interface MapSnapshot {
   year: number
+  known_memorials: { count: number; scope: string }
   total_burials: number
   notable_figures: string[]
   demographics: SnapshotDemographics
@@ -84,3 +85,5 @@ export interface Supporter {
   verified: boolean
   sources?: Source[]
 }
+
+

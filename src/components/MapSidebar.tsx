@@ -3,16 +3,16 @@ import { useMemo, useState } from 'react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { individuals } from '@/data'
+import memorials from '@/data/memorials.json'
 import type { Individual, MapSnapshot } from '@/types'
+
+// Flip to true once individuals.json contains real, sourced people
+const SHOW_NOTABLE_FIGURES = false
+
+const memorialCounts = memorials.counts as Record<string, { count: number; scope: string }>
 
 function Stat({ label, value, suffix }: { label: string; value: string | number; suffix?: string }) {
   return (
@@ -52,7 +52,6 @@ function FigureDialog({ person, onClose }: { person: Individual | null; onClose:
 export default function MapSidebar({ snapshot, label }: { snapshot: MapSnapshot; label: string }) {
   const [selected, setSelected] = useState<Individual | null>(null)
 
-  // Only show notables who are already buried by this snapshot year
   const notables = useMemo(
     () =>
       snapshot.notable_figures
@@ -61,57 +60,17 @@ export default function MapSidebar({ snapshot, label }: { snapshot: MapSnapshot;
     [snapshot],
   )
 
-  const { gender, avg_age_at_death, cemetery_acreage, historical_context } = snapshot.demographics
-  const total = gender.Male + gender.Female
-  const malePct = Math.round((gender.Male / total) * 100)
+  const { cemetery_acreage, historical_context } = snapshot.demographics
+  const memorial = memorialCounts[String(snapshot.year)]
 
   return (
     <aside className="flex w-96 shrink-0 flex-col border-l bg-background">
       <ScrollArea className="min-h-0 flex-1">
-        <div
-          key={snapshot.year}
-          className="animate-in fade-in-0 slide-in-from-right-2 space-y-4 p-4 duration-300"
-        >
+        <div key={snapshot.year} className="animate-in fade-in-0 slide-in-from-right-2 space-y-4 p-4 duration-300">
           <div className="px-1 pt-1">
-            <h2 className="text-3xl font-semibold tabular-nums tracking-tight">{label}</h2>
+            <h2 className="text-3xl font-bold tabular-nums tracking-tight">{label}</h2>
             <p className="text-sm text-muted-foreground">Cemetery snapshot</p>
           </div>
-
-          <Card>
-            <CardContent className="grid grid-cols-2 gap-x-4 gap-y-5">
-              <div className="col-span-2">
-                <Stat label="Total burials" value={snapshot.total_burials.toLocaleString()} />
-              </div>
-              <Stat label="Avg. age at death" value={avg_age_at_death} suffix="yrs" />
-              <Stat label="Cemetery size" value={cemetery_acreage} suffix="acres" />
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-sm">Gender</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div
-                className="flex h-2.5 overflow-hidden rounded-full bg-muted"
-                role="img"
-                aria-label={`${malePct}% male, ${100 - malePct}% female`}
-              >
-                <div className="bg-chart-1 transition-all duration-500" style={{ width: `${malePct}%` }} />
-                <div className="flex-1 bg-chart-3 transition-all duration-500" />
-              </div>
-              <div className="flex justify-between text-xs text-muted-foreground">
-                <span className="flex items-center gap-1.5">
-                  <span className="size-2 rounded-full bg-chart-1" />
-                  Male {malePct}%
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <span className="size-2 rounded-full bg-chart-3" />
-                  Female {100 - malePct}%
-                </span>
-              </div>
-            </CardContent>
-          </Card>
 
           <Card>
             <CardHeader>
@@ -123,34 +82,81 @@ export default function MapSidebar({ snapshot, label }: { snapshot: MapSnapshot;
           </Card>
 
           <Card>
-            <CardHeader>
-              <CardTitle className="text-sm">Notable figures</CardTitle>
-              <CardDescription>Select a name to read their story.</CardDescription>
-            </CardHeader>
-            <CardContent className="gap-1">
-              {notables.map((person) => (
-                <Button
-                  key={person.id}
-                  variant="ghost"
-                  className="h-auto w-full justify-start gap-3 px-2 py-2 text-left"
-                  onClick={() => setSelected(person)}
-                >
-                  <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground">
-                    <UserIcon className="size-4" />
-                  </span>
-                  <span className="min-w-0">
-                    <span className="block truncate text-sm font-medium">{person.name}</span>
-                    <span className="block truncate text-xs font-normal text-muted-foreground">
-                      {person.birth}–{person.death} · {person.demographics.occupation}
-                    </span>
-                  </span>
-                </Button>
-              ))}
-              {notables.length === 0 && (
-                <Badge variant="secondary" className="w-fit">None yet in this period</Badge>
-              )}
+            <CardContent>
+              <Stat label="Cemetery size" value={cemetery_acreage} suffix="acres" />
             </CardContent>
           </Card>
+
+          {memorial && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-sm">Burial records</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                <Stat
+                  label={`Memorials on Find a Grave, ${memorial.scope}`}
+                  value={memorial.count.toLocaleString()}
+                />
+                <p className="text-xs text-muted-foreground">
+                  Source:{' '}
+                  <a
+                    href={memorials.source.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline underline-offset-4"
+                  >
+                    {memorials.source.label}
+                  </a>
+                  , accessed {memorials.source.accessed}. Counts online memorials, not official burial totals,
+                  and may include duplicates or omit records.
+                </p>
+              </CardContent>
+            </Card>
+          )}
+
+          {SHOW_NOTABLE_FIGURES ? (
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-sm">Notable figures</CardTitle>
+                <CardDescription>Select a name to read their story.</CardDescription>
+              </CardHeader>
+              <CardContent className="gap-1">
+                {notables.map((person) => (
+                  <Button
+                    key={person.id}
+                    variant="ghost"
+                    className="h-auto w-full justify-start gap-3 px-2 py-2 text-left"
+                    onClick={() => setSelected(person)}
+                  >
+                    <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground">
+                      <UserIcon className="size-4" />
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block truncate text-sm font-medium">{person.name}</span>
+                      <span className="block truncate text-xs font-normal text-muted-foreground">
+                        {person.birth}–{person.death} · {person.demographics.occupation}
+                      </span>
+                    </span>
+                  </Button>
+                ))}
+                {notables.length === 0 && (
+                  <Badge variant="secondary" className="w-fit">None yet in this period</Badge>
+                )}
+              </CardContent>
+            </Card>
+          ) : (
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-sm">Notable figures</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  Biographies are being compiled with the Foundation and will appear here once they are
+                  verified.
+                </p>
+              </CardContent>
+            </Card>
+          )}
         </div>
       </ScrollArea>
       <FigureDialog person={selected} onClose={() => setSelected(null)} />

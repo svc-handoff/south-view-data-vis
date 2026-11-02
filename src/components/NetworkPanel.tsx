@@ -125,7 +125,7 @@ function SupporterDetail({ supporter, onClose }: { supporter: Supporter; onClose
 
         <Separator />
         <div>
-          <h4 className="mb-2 text-xs font-medium text-muted-foreground">Contributions</h4>
+          <h4 className="mb-2 text-sm font-bold text-foreground">Contributions</h4>
           <ul className="space-y-3">
             {contributions.map((c, i) => (
               <li key={i} className="flex gap-3 text-sm">
@@ -141,7 +141,7 @@ function SupporterDetail({ supporter, onClose }: { supporter: Supporter; onClose
           <>
             <Separator />
             <div>
-              <h4 className="mb-1 text-xs font-medium text-muted-foreground">Sources</h4>
+              <h4 className="mb-1 text-sm font-bold text-foreground">Sources</h4>
               <ul>
                 {supporter.sources.map((src) => (
                   <li key={src.url}>

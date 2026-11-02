@@ -45,13 +45,13 @@ export default function NetworkGraphView() {
 
   return (
     <div className="flex h-full flex-col">
-      <div className="flex shrink-0 flex-wrap items-center gap-x-5 gap-y-2 border-b px-4 py-3 text-xs text-muted-foreground md:px-6">
+      <div className="flex shrink-0 flex-wrap items-center justify-center gap-x-5 gap-y-2 border-b py-3 pr-4 pl-52 text-xs text-muted-foreground">
         {CATEGORIES.map((c) => (
           <LegendItem key={c} swatch={<span className={cn('size-2.5 rounded-full', CATEGORY_STYLES[c].bg)} />}>
             {c}
           </LegendItem>
         ))}
-        <div className="ml-auto flex flex-wrap items-center gap-x-5 gap-y-2">
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
           <LegendItem swatch={<EdgeSwatch />}>Donor</LegendItem>
           <LegendItem swatch={<EdgeSwatch dash="5,3" />}>Sponsor</LegendItem>
           <LegendItem swatch={<BadgeCheckIcon className="size-3.5 text-foreground" />}>Verified</LegendItem>

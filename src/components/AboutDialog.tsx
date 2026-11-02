@@ -13,7 +13,7 @@ export default function AboutDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="sm">
+        <Button variant="ghost" size="sm" className="justify-start">
           <InfoIcon />
           About
         </Button>
@@ -28,22 +28,22 @@ export default function AboutDialog() {
         </DialogHeader>
         <div className="space-y-4 text-sm">
           <div>
-            <h3 className="font-medium">Map</h3>
+            <h3 className="font-bold">Map</h3>
             <p className="text-muted-foreground">
-              Move the timeline to watch the cemetery grow section by section, with population,
-              demographics and notable figures for each period.
+              Move the timeline to watch the cemetery grow, with land and historical context for
+              each period.
             </p>
           </div>
           <div>
-            <h3 className="font-medium">Network</h3>
+            <h3 className="font-bold">Network</h3>
             <p className="text-muted-foreground">
-              See the sponsors and donors who support South-View and how each one has
-              contributed to the cemetery over time.
+              See the sponsors and donors who support South-View and how each one has contributed
+              to the cemetery over time.
             </p>
           </div>
           <p className="rounded-md border bg-muted/50 p-3 text-muted-foreground">
-            Most names, biographies, statistics and supporters shown are sample data for
-            demonstration. Supporters marked Verified are confirmed by public sources.
+            Most names, biographies, statistics and supporters shown are cross-refrenced data for 
+            demonstration. Supporters marked 'Verified' are confirmed by public sources.
           </p>
         </div>
       </DialogContent>

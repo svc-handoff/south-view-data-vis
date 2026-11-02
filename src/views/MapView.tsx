@@ -13,29 +13,24 @@ import { snapshotLabel } from '@/lib/format'
 import { cn } from '@/lib/utils'
 import type { MapSnapshot } from '@/types'
 
-const CENTER: [number, number] = [33.7013, -84.3700]
-const PLAY_INTERVAL_MS = 1467
-// Pause after the map first appears before the timeline starts playing on its own
-const AUTOPLAY_DELAY_MS = 1000
+const CENTER: [number, number] = [33.7013, -84.37]
+const PLAY_INTERVAL_MS = 3500 // how long each period stays on screen
+const FILL_OPACITY = 0.7
+const RING_COLORS = ['#ffffd4', '#fee391', '#fec44f', '#fe9929', '#d95f0e', '#993404']
 const LAST = mapSnapshots.length - 1
 
 // Land added at each date: that date's footprint with the previous one cut out as a hole.
-// Footprints only grow, so the rings tile the current footprint and older boundaries stay
-// visible. A date that adds nothing (same footprint as the previous date) gets no ring.
-const RINGS = mapSnapshots.flatMap((s, i) => {
-  const prev = mapSnapshots[i - 1]
-  if (prev && JSON.stringify(prev.footprint) === JSON.stringify(s.footprint)) return []
-  return [{ year: s.year, index: i, positions: prev ? [s.footprint, prev.footprint] : [s.footprint] }]
-})
-
-// Older rings are shaded darker. `age` is how many visible rings are newer than this one.
-function ringFillOpacity(age: number) {
-  return Math.min(0.25 + 0.05 * age, 0.6)
-}
+// A date that adds nothing (same footprint as the previous date) gets no ring.
+const RINGS = mapSnapshots
+  .flatMap((s, i) => {
+    const prev = mapSnapshots[i - 1]
+    if (prev && JSON.stringify(prev.footprint) === JSON.stringify(s.footprint)) return []
+    return [{ year: s.year, index: i, positions: prev ? [s.footprint, prev.footprint] : [s.footprint] }]
+  })
+  .map((r, i) => ({ ...r, color: RING_COLORS[i % RING_COLORS.length], first: i === 0 }))
 
 function visibleRings(index: number) {
-  const rings = RINGS.filter((r) => r.index <= index)
-  return rings.map((r, i) => ({ ...r, fillOpacity: ringFillOpacity(rings.length - 1 - i) }))
+  return RINGS.filter((r) => r.index <= index)
 }
 
 function footprintBounds(footprint: [number, number][]): LatLngBoundsExpression | null {
@@ -51,53 +46,36 @@ function footprintBounds(footprint: [number, number][]): LatLngBoundsExpression 
 
 function FootprintOverlays({ snapshot }: { snapshot: MapSnapshot }) {
   const map = useMap()
-  const first = useRef(true)
 
+  // Frame the final (largest) footprint once, so the camera never moves during playback
   useEffect(() => {
-    const bounds = footprintBounds(snapshot.footprint)
-    if (!bounds) return
-    const options = { padding: [60, 60] as [number, number], maxZoom: 17 }
-    if (first.current) {
-      first.current = false
-      map.fitBounds(bounds, options)
-    } else {
-      map.flyToBounds(bounds, { ...options, duration: 0.8 })
-    }
-  }, [snapshot, map])
+    const bounds = footprintBounds(mapSnapshots[LAST].footprint)
+    if (bounds) map.fitBounds(bounds, { padding: [60, 60], maxZoom: 17 })
+  }, [map])
 
-  const visible = new Map(visibleRings(mapSnapshots.indexOf(snapshot)).map((r) => [r.year, r]))
+  const shownYears = new Set(visibleRings(mapSnapshots.indexOf(snapshot)).map((r) => r.year))
 
   // Every ring stays mounted and fades in/out, so the cemetery appears to grow smoothly.
-  // Adding polygons mid-flyToBounds would also render them offset.
   return (
     <>
-      {RINGS.map((ring, i) => (
-        <FootprintRing
-          key={ring.year}
-          ring={ring}
-          label={i === 0 ? `Grounds by ${ring.year}` : `Added by ${ring.year}`}
-          fillOpacity={visible.get(ring.year)?.fillOpacity}
-        />
+      {RINGS.map((ring) => (
+        <FootprintRing key={ring.year} ring={ring} shown={shownYears.has(ring.year)} />
       ))}
+      {/* One thin line around the current outer boundary only */}
+      <Polygon
+        key={snapshot.year}
+        positions={snapshot.footprint}
+        interactive={false}
+        pathOptions={{ color: '#5c2a06', weight: 1, fill: false }}
+      />
     </>
   )
 }
 
-function FootprintRing({
-  ring,
-  label,
-  fillOpacity,
-}: {
-  ring: (typeof RINGS)[number]
-  label: string
-  /** undefined while the ring is hidden */
-  fillOpacity: number | undefined
-}) {
+function FootprintRing({ ring, shown }: { ring: (typeof RINGS)[number]; shown: boolean }) {
   const ref = useRef<LeafletPolygon>(null)
-  const shown = fillOpacity !== undefined
 
-  // Leaflet only reads `interactive` when it creates the path, and every ring is created up
-  // front, so all rings are interactive and hidden ones opt out of pointer events here.
+  // Hidden rings must not catch clicks or hovers
   useEffect(() => {
     const el = ref.current?.getElement() as SVGPathElement | undefined
     if (el) el.style.pointerEvents = shown ? '' : 'none'
@@ -108,15 +86,15 @@ function FootprintRing({
       ref={ref}
       positions={ring.positions}
       pathOptions={{
-        className: 'fill-chart-1 stroke-chart-1 transition-[fill-opacity,stroke-opacity] duration-500',
-        fillOpacity: fillOpacity ?? 0,
-        opacity: shown ? 0.9 : 0,
-        weight: 2,
+        className: 'transition-[fill-opacity] duration-1000',
+        stroke: false,
+        fillColor: ring.color,
+        fillOpacity: shown ? FILL_OPACITY : 0,
       }}
     >
       {shown && (
         <Tooltip sticky className="sv-tooltip">
-          {label}
+          {ring.first ? `Original grounds (${ring.year})` : `Added ${ring.year}`}
         </Tooltip>
       )}
     </Polygon>
@@ -138,12 +116,7 @@ function Timeline({
   return (
     <Card className="absolute inset-x-4 bottom-4 z-[1000] mx-auto max-w-3xl gap-0 bg-background/95 p-4 shadow-lg backdrop-blur">
       <div className="flex items-center gap-4">
-        <Button
-          size="icon"
-          variant="outline"
-          onClick={onTogglePlay}
-          aria-label={playing ? 'Pause timeline' : 'Play timeline'}
-        >
+        <Button size="icon" variant="outline" onClick={onTogglePlay} aria-label={playing ? 'Pause timeline' : 'Play timeline'}>
           {playing ? <PauseIcon /> : <PlayIcon />}
         </Button>
         <div className="min-w-0 flex-1">
@@ -164,7 +137,7 @@ function Timeline({
                 tabIndex={-1}
                 className={cn(
                   'absolute -translate-x-1/2 text-xs tabular-nums transition-colors hover:text-foreground',
-                  i === index ? 'font-medium text-foreground' : 'text-muted-foreground',
+                  i === index ? 'font-bold text-foreground' : 'text-muted-foreground',
                 )}
                 // Radix thumbs are inset by half their 16px width at each end
                 style={{ left: `calc(8px + (100% - 16px) * ${i / LAST})` }}
@@ -174,7 +147,6 @@ function Timeline({
             ))}
           </div>
         </div>
-        {/* Fixed width sized for "1970–Present" so the slider doesn't resize as the label changes */}
         <div className="w-48 shrink-0 text-right">
           <p className="text-2xl font-semibold tracking-tight whitespace-nowrap tabular-nums">
             {snapshotLabel(snapshot, index === LAST)}
@@ -188,12 +160,13 @@ function Timeline({
 function FootprintLegend({ index }: { index: number }) {
   return (
     <Card className="absolute top-3 right-3 z-[1000] gap-1.5 bg-background/95 px-3 py-2.5 text-xs shadow-sm backdrop-blur">
-      <p className="font-medium">Grounds by</p>
+      <p className="font-bold">Grounds by</p>
       {visibleRings(index).map((r) => (
         <div key={r.year} className="flex items-center gap-2 tabular-nums">
-          <span className="relative size-2.5 overflow-hidden rounded-sm border border-chart-1">
-            <span className="absolute inset-0 bg-chart-1" style={{ opacity: r.fillOpacity }} />
-          </span>
+          <span
+            className="size-3 rounded-sm border border-black/30"
+            style={{ backgroundColor: r.color }}
+          />
           <span>{r.year}</span>
         </div>
       ))}
@@ -203,28 +176,16 @@ function FootprintLegend({ index }: { index: number }) {
 
 export default function MapView() {
   const [index, setIndex] = useState(0)
-  const [playing, setPlaying] = useState(false)
+  const [playing, setPlaying] = useState(false) // starts paused: the user presses play
   const [tilesReady, setTilesReady] = useState(false)
-  const [autoplayPending, setAutoplayPending] = useState(true)
-  // Set when the user presses play so the first step comes quickly as feedback
   const quickStepRef = useRef(false)
   const snapshot = mapSnapshots[index]
 
-  // Don't leave the skeleton up forever if tiles can't load (offline demo)
+  // Don't leave the skeleton up forever if tiles can't load
   useEffect(() => {
     const t = setTimeout(() => setTilesReady(true), 5000)
     return () => clearTimeout(t)
   }, [])
-
-  // Start playing once the map is visible, unless the user has already taken over
-  useEffect(() => {
-    if (!tilesReady || !autoplayPending) return
-    const t = setTimeout(() => {
-      setAutoplayPending(false)
-      setPlaying(true)
-    }, AUTOPLAY_DELAY_MS)
-    return () => clearTimeout(t)
-  }, [tilesReady, autoplayPending])
 
   useEffect(() => {
     if (!playing) return
@@ -238,7 +199,6 @@ export default function MapView() {
   }, [playing, index])
 
   const togglePlay = useCallback(() => {
-    setAutoplayPending(false)
     quickStepRef.current = !playing
     if (!playing && index >= LAST) setIndex(0)
     setPlaying((p) => !p)
@@ -255,7 +215,6 @@ export default function MapView() {
           />
           <FootprintOverlays snapshot={snapshot} />
         </MapContainer>
-
         <div
           className={cn(
             'pointer-events-none absolute inset-0 z-[1100] transition-opacity duration-500',
@@ -270,7 +229,6 @@ export default function MapView() {
         <Timeline
           index={index}
           onChange={(i) => {
-            setAutoplayPending(false)
             setPlaying(false)
             setIndex(i)
           }}
