@@ -34,7 +34,7 @@ src/
 │   ├── individuals.json     # 30 individuals (notable figures on the map)
 │   ├── events.json          # 6 historical events (kept, not currently displayed)
 │   ├── supporters.json      # Sponsors and donors (2 verified, the rest sample)
-│   └── map_snapshots.json   # 9 dated footprints (1886–2026) with burial stats
+│   └── map_snapshots.json   # 6 dated footprints (1888–1977) with burial stats
 ├── views/
 │   ├── MapView.tsx          # Leaflet map + time slider + footprint polygons
 │   └── NetworkGraphView.tsx # Supporter network: legend, graph, side panel
@@ -62,7 +62,7 @@ Key data models (`src/types.ts`):
 
 The map uses **Leaflet** via `react-leaflet` with OpenStreetMap tiles centered on the real cemetery coordinates (33.7013, -84.3700).
 
-- **Footprint overlays**: Each snapshot's `footprint` is the developed extent of the cemetery at that date. The main source is the Verity Works character-area map from the National Register nomination (Aug 2025), with USDA aerials (1940, 1949), the 1944 plat, the 1954 USGS topo sheet and Fulton County parcels (2026). The 1886 footprint is a low-confidence proxy: the oldest grave grid on the 1940 aerial. Footprints only grow over time, so the map draws each date's added land as its own ring (that date's footprint with the previous one cut out). Older rings are shaded darker and the legend lists each date shown. All rings stay mounted as `<Polygon>` components and fade in and out as the timeline moves.
+- **Footprint overlays**: Each snapshot's `footprint` is the cemetery's grounds at that date: all land the South View Cemetery Association held, drawn to its property lines. Each step is a purchase dated by the 1944 plat or the Fulton County deed books (1888 original tract, 1902 and 1909 additions, 1944 Turman lots, 1957 Pauley land, 1977 North Section). Geometry comes from the plat, deed calls and the Verity Works character-area map from the National Register nomination (Aug 2025), aligned to today's parcels. Atlanta street maps from 1935–1973 corroborate the outlines. The 1977 footprint is unchanged on the 2025 map, so the timeline shows it as 1977–Present. Footprints only grow over time, so the map draws each date's added land as its own ring (that date's footprint with the previous one cut out). Older rings are shaded darker and the legend lists each date shown. All rings stay mounted as `<Polygon>` components and fade in and out as the timeline moves.
 - **Timeline**: A floating card with play/pause and a shadcn slider controls which `MapSnapshot` is displayed. Changing the snapshot updates the sidebar data and triggers `map.flyToBounds()` to animate the viewport to fit the current footprint.
 - **Sidebar**: Displays the selected snapshot's year, total burials, a gender demographics bar, average age at death, cemetery acreage, historical context paragraph, and a clickable list of notable figures. Clicking a notable figure opens a dialog with their bio.
 
