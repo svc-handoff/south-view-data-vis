@@ -234,14 +234,14 @@
     "verified": false
   },
   {
-    "id": "sup-banks",
-    "name": "Gloria N. Banks",
+    "id": "w-pierce",
+    "name": "Walter Pierce",
     "category": "Individual",
     "relationship": "donor",
-    "description": "Individual donor.",
+    "description": "Individual supporter.",
     "contributions": [
-      { "year": 2025, "amount": 1000, "purpose": "General support" }
+      { "year": 2026, "amount": 25, "purpose": "General support" }
     ],
-    "verified": false
+    "verified": true
   }
 ]
