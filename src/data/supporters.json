@@ -6,12 +6,22 @@
     "relationship": "donor",
     "description": "Mayor Andre Dickens and the Atlanta City Council approved $50,000, secured by Councilmember Jason Winston, to research and document the cemetery to National Register standards.",
     "contributions": [
-      { "year": 2024, "amount": 50000, "purpose": "Research and documentation for the National Register of Historic Places nomination" }
+      {
+        "year": 2024,
+        "amount": 50000,
+        "purpose": "Research and documentation for the National Register of Historic Places nomination"
+      }
     ],
     "verified": true,
     "sources": [
-      { "label": "Rough Draft Atlanta (June 2024)", "url": "https://roughdraftatlanta.com/2024/06/11/south-view-cemetery-seeks-inclusion-on-national-register-of-historic-places/" },
-      { "label": "WSB-TV", "url": "https://www.wsbtv.com/news/local/atlanta/project-aims-get-atlantas-oldest-black-cemetery-added-national-register-historic-places/I7A33QI27ZH6DG2KPJ5WRNPNVA" }
+      {
+        "label": "Rough Draft Atlanta (June 2024)",
+        "url": "https://roughdraftatlanta.com/2024/06/11/south-view-cemetery-seeks-inclusion-on-national-register-of-historic-places/"
+      },
+      {
+        "label": "WSB-TV",
+        "url": "https://www.wsbtv.com/news/local/atlanta/project-aims-get-atlantas-oldest-black-cemetery-added-national-register-historic-places/I7A33QI27ZH6DG2KPJ5WRNPNVA"
+      }
     ]
   },
   {
@@ -21,217 +31,19 @@
     "relationship": "sponsor",
     "description": "Sponsored South-View's nomination to the National Register of Historic Places. The cemetery was added to the register on July 8, 2026.",
     "contributions": [
-      { "year": 2026, "amount": null, "purpose": "Sponsored the National Register of Historic Places nomination" }
+      {
+        "year": 2026,
+        "amount": null,
+        "purpose": "Sponsored the National Register of Historic Places nomination"
+      }
     ],
     "verified": true,
     "sources": [
-      { "label": "FOX 5 Atlanta (Oct 2026)", "url": "https://www.fox5atlanta.com/news/national-register-historic-places-adds-4-georgia-landmarks" }
+      {
+        "label": "FOX 5 Atlanta (Oct 2026)",
+        "url": "https://www.fox5atlanta.com/news/national-register-historic-places-adds-4-georgia-landmarks"
+      }
     ]
-  },
-  {
-    "id": "sup-sweetgum-legacy",
-    "name": "Sweetgum Legacy Foundation",
-    "category": "Foundation",
-    "relationship": "donor",
-    "description": "Family foundation focused on preserving historic Black landmarks across the Southeast.",
-    "contributions": [
-      { "year": 2012, "amount": 25000, "purpose": "Monument restoration, phase I" },
-      { "year": 2019, "amount": 40000, "purpose": "Monument restoration, phase II" }
-    ],
-    "verified": false
-  },
-  {
-    "id": "sup-harlow-bennett",
-    "name": "Harlow-Bennett Family Fund",
-    "category": "Foundation",
-    "relationship": "donor",
-    "description": "Donor-advised fund supporting archives and genealogy projects.",
-    "contributions": [
-      { "year": 2016, "amount": 15000, "purpose": "Digitizing burial records and plot maps" }
-    ],
-    "verified": false
-  },
-  {
-    "id": "sup-linden-trust",
-    "name": "Linden Arts & Heritage Trust",
-    "category": "Foundation",
-    "relationship": "donor",
-    "description": "Regional trust funding cultural memory and public history work.",
-    "contributions": [
-      { "year": 2021, "amount": 30000, "purpose": "Oral history project with descendant families" },
-      { "year": 2023, "amount": 12000, "purpose": "Guided education tours for local schools" }
-    ],
-    "verified": false
-  },
-  {
-    "id": "sup-ridgeline-trust",
-    "name": "Ridgeline Community Trust",
-    "category": "Foundation",
-    "relationship": "donor",
-    "description": "Neighborhood-focused community trust.",
-    "contributions": [
-      { "year": 2009, "amount": 10000, "purpose": "Perimeter fence repair" }
-    ],
-    "verified": false
-  },
-  {
-    "id": "sup-northfield-bank",
-    "name": "Northfield Bank & Trust",
-    "category": "Corporate",
-    "relationship": "sponsor",
-    "description": "Regional bank and recurring sponsor of the annual Founders Day celebration.",
-    "contributions": [
-      { "year": 2018, "amount": 5000, "purpose": "Founders Day celebration" },
-      { "year": 2022, "amount": 7500, "purpose": "Founders Day celebration" }
-    ],
-    "verified": false
-  },
-  {
-    "id": "sup-coldwater-construction",
-    "name": "Coldwater Construction Co.",
-    "category": "Corporate",
-    "relationship": "sponsor",
-    "description": "Local contractor that donated labor and materials.",
-    "contributions": [
-      { "year": 2015, "amount": null, "purpose": "In-kind gate and drainage repair" }
-    ],
-    "verified": false
-  },
-  {
-    "id": "sup-brightline-utilities",
-    "name": "Brightline Utilities",
-    "category": "Corporate",
-    "relationship": "sponsor",
-    "description": "Utility company community-giving program.",
-    "contributions": [
-      { "year": 2020, "amount": 10000, "purpose": "Tree canopy assessment and care" }
-    ],
-    "verified": false
-  },
-  {
-    "id": "sup-mapleton-insurance",
-    "name": "Mapleton Insurance Group",
-    "category": "Corporate",
-    "relationship": "donor",
-    "description": "Insurance firm with an employee giving match.",
-    "contributions": [
-      { "year": 2014, "amount": 8000, "purpose": "Grounds maintenance" }
-    ],
-    "verified": false
-  },
-  {
-    "id": "sup-overland-media",
-    "name": "Overland Media Partners",
-    "category": "Corporate",
-    "relationship": "sponsor",
-    "description": "Production studio that donated video and promotion services.",
-    "contributions": [
-      { "year": 2023, "amount": null, "purpose": "In-kind short documentary production" }
-    ],
-    "verified": false
-  },
-  {
-    "id": "sup-southern-burial-alliance",
-    "name": "Southern Burial Grounds Alliance",
-    "category": "Nonprofit",
-    "relationship": "sponsor",
-    "description": "Volunteer network that organizes cleanup days at historic cemeteries.",
-    "contributions": [
-      { "year": 2017, "amount": 3000, "purpose": "Volunteer cleanup days" },
-      { "year": 2024, "amount": 4000, "purpose": "Volunteer cleanup days" }
-    ],
-    "verified": false
-  },
-  {
-    "id": "sup-eastgate-coalition",
-    "name": "Eastgate Neighborhood Coalition",
-    "category": "Nonprofit",
-    "relationship": "donor",
-    "description": "Coalition of nearby neighborhood groups.",
-    "contributions": [
-      { "year": 2010, "amount": 2000, "purpose": "Entrance landscaping" }
-    ],
-    "verified": false
-  },
-  {
-    "id": "sup-heritage-trails",
-    "name": "Heritage Trails Collective",
-    "category": "Nonprofit",
-    "relationship": "sponsor",
-    "description": "Public history group that designs walking tours.",
-    "contributions": [
-      { "year": 2019, "amount": null, "purpose": "In-kind walking tour signage and map design" }
-    ],
-    "verified": false
-  },
-  {
-    "id": "sup-new-covenant",
-    "name": "New Covenant Fellowship",
-    "category": "Faith community",
-    "relationship": "donor",
-    "description": "Congregation with many members whose families are buried at South-View.",
-    "contributions": [
-      { "year": 2011, "amount": 2500, "purpose": "General support" },
-      { "year": 2025, "amount": 5000, "purpose": "Memorial Day observance" }
-    ],
-    "verified": false
-  },
-  {
-    "id": "sup-bethel-ridge",
-    "name": "Bethel Ridge Church",
-    "category": "Faith community",
-    "relationship": "donor",
-    "description": "Neighborhood congregation and long-time supporter.",
-    "contributions": [
-      { "year": 2008, "amount": 3000, "purpose": "Headstone cleaning program" }
-    ],
-    "verified": false
-  },
-  {
-    "id": "sup-ellis",
-    "name": "Dorothy & Raymond Ellis",
-    "category": "Individual",
-    "relationship": "donor",
-    "description": "Descendants of early lot owners.",
-    "contributions": [
-      { "year": 2013, "amount": 20000, "purpose": "Perpetual care endowment" },
-      { "year": 2020, "amount": 10000, "purpose": "Perpetual care endowment" }
-    ],
-    "verified": false
-  },
-  {
-    "id": "sup-freeman",
-    "name": "Marcus T. Freeman",
-    "category": "Individual",
-    "relationship": "donor",
-    "description": "Individual donor.",
-    "contributions": [
-      { "year": 2018, "amount": 5000, "purpose": "General support" }
-    ],
-    "verified": false
-  },
-  {
-    "id": "sup-avery-holt",
-    "name": "Celeste Avery-Holt",
-    "category": "Individual",
-    "relationship": "donor",
-    "description": "Individual donor and volunteer genealogist.",
-    "contributions": [
-      { "year": 2022, "amount": 2000, "purpose": "Records digitization" }
-    ],
-    "verified": false
-  },
-  {
-    "id": "sup-whitlock",
-    "name": "The Whitlock Family",
-    "category": "Individual",
-    "relationship": "donor",
-    "description": "Family supporters since the foundation was formed.",
-    "contributions": [
-      { "year": 2006, "amount": 1500, "purpose": "Founding gift to the preservation foundation" },
-      { "year": 2016, "amount": 3500, "purpose": "Monument restoration" }
-    ],
-    "verified": false
   },
   {
     "id": "w-pierce",
@@ -240,7 +52,56 @@
     "relationship": "donor",
     "description": "Individual supporter.",
     "contributions": [
-      { "year": 2026, "amount": 25, "purpose": "General support" }
+      {
+        "year": 2026,
+        "amount": 25,
+        "purpose": "General support"
+      }
+    ],
+    "verified": true
+  },
+  {
+    "id": "w-allison",
+    "name": "William Allison",
+    "category": "Individual",
+    "relationship": "donor",
+    "description": "Individual supporter.",
+    "contributions": [
+      {
+        "year": 2026,
+        "amount": 1000,
+        "purpose": "General support"
+      }
+    ],
+    "verified": true
+  },
+  {
+    "id": "j-bryant",
+    "name": "Jason Bryant",
+    "category": "Individual",
+    "relationship": "donor",
+    "description": "Individual supporter.",
+    "contributions": [
+      {
+        "year": 2026,
+        "amount": 500,
+        "purpose": "General support"
+      }
+    ],
+    "verified": true
+  },
+  {
+    "id": "runningnerd",
+    "name": "RunningNerd",
+    "category": "Individual",
+    "relationship": "donor",
+    "description": "Individual supporter.",
+    "contributions": [
+      {
+        "year": 2026,
+        "amount": 100,
+        "purpose": "General support"
+      }
     ],
     "verified": true
   }

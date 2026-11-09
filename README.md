@@ -4,7 +4,7 @@ An interactive data visualization tool for exploring the history and community o
 
 **Live site:** <https://south-view-data-vis.vercel.app>
 
-> **Note:** Some content is still sample data, including most supporters and all notable figures. See [Data status](#data-status) before publishing or relying on any of it.
+> **Note:** Some content is still sample data, including all notable figures. See [Data status](#data-status) before publishing or relying on any of it.
 
 ## Contents
 
@@ -155,7 +155,8 @@ STEERING.md                  # Original build plan, kept for history and now out
 | Events | **Sample:** stored in `events.json` but not displayed |
 | City of Atlanta, Atlanta Preservation Center | Real: `verified: true`, with public sources linked |
 | Walter Pierce | `verified: true` and added as a real supporter, but no `sources` are listed. The commit that added him refers to <https://givebutter.com/south-view-cemetery-nqvhuj>. |
-| Other 18 supporters | **Sample:** invented names and amounts, so the $274,025 giving total isn't real |
+| William Allison ($1,000), Jason Bryant ($500), RunningNerd ($100) | `verified: true` on the project team's say-so; no `sources` listed. Year is set to 2026 as a placeholder. |
+| Former sample supporters | Removed: the 18 invented supporters are no longer in `supporters.json` |
 
 ### Open work
 

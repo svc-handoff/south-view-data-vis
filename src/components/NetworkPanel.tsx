@@ -188,7 +188,7 @@ function CemeteryOverview({ onSelect }: { onSelect: (id: string) => void }) {
             <p className="text-xl font-semibold tabular-nums tracking-tight">{formatUSD(total)}</p>
           </div>
           <p className="col-span-2 text-xs text-muted-foreground">
-            {verified} verified from public sources; the rest are sample data for the demo.
+            {verified} of {supporters.length} supporters verified.
           </p>
         </CardContent>
       </Card>
