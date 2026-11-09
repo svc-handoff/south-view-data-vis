@@ -3,6 +3,7 @@ import { MaximizeIcon, MinusIcon, PlusIcon } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { supporters } from '@/data'
+import { useIsLandscape, useIsMobile, useIsTouch } from '@/hooks/useIsMobile'
 import { CATEGORIES, CATEGORY_STYLES, CEMETERY_ID, formatUSD, totalGiving } from '@/lib/supporters'
 import type { Supporter } from '@/types'
 
@@ -45,8 +46,19 @@ const HUB_RADIUS = 30
 const RINGS = [170, 255]
 const X_STRETCH = 1.2
 const Y_STRETCH = 1.2
+const DESKTOP_LAYOUT = { rings: RINGS, xStretch: X_STRETCH, yStretch: Y_STRETCH }
+// Phones: tighter rings shaped to the screen, so the graph fits at a readable scale
+const PORTRAIT_LAYOUT = { rings: [105, 165], xStretch: 0.8, yStretch: 1.3 }
+const LANDSCAPE_LAYOUT = { rings: [105, 165], xStretch: 2.4, yStretch: 0.45 }
+const MOBILE_FIT_PADDING = 20
+const MOBILE_HIT_SLOP = 14 // extra tappable radius around each node
+const MOBILE_FOCUS_Y = 0.27 // where a selected node sits, clear of the details sheet
 
-function buildGraph(): { nodes: GraphNode[]; links: GraphLink[] } {
+function sameView(a: d3.ZoomTransform, b: d3.ZoomTransform) {
+  return Math.abs(a.k - b.k) < 0.001 && Math.abs(a.x - b.x) < 1 && Math.abs(a.y - b.y) < 1
+}
+
+function buildGraph({ rings, xStretch, yStretch }: typeof DESKTOP_LAYOUT): { nodes: GraphNode[]; links: GraphLink[] } {
   // The cemetery is pinned at the centre; every supporter links to it
   const hub: HubNode = { id: CEMETERY_ID, type: 'hub', name: 'South-View Cemetery', fx: 0, fy: 0 }
   const nodes: GraphNode[] = [hub]
@@ -59,9 +71,9 @@ function buildGraph(): { nodes: GraphNode[]; links: GraphLink[] } {
   ordered.forEach((s, i) => {
     const total = totalGiving(s)
     const angle = -Math.PI / 2 + (i / ordered.length) * Math.PI * 2
-    const ring = i % RINGS.length
-    const homeX = Math.cos(angle) * RINGS[ring] * X_STRETCH
-    const homeY = Math.sin(angle) * RINGS[ring] * Y_STRETCH
+    const ring = i % rings.length
+    const homeX = Math.cos(angle) * rings[ring] * xStretch
+    const homeY = Math.sin(angle) * rings[ring] * yStretch
     nodes.push({ id: s.id, type: 'supporter', name: s.name, data: s, total, homeX, homeY, angle, ring, x: homeX, y: homeY })
     links.push({
       source: s.id,
@@ -77,11 +89,12 @@ function buildGraph(): { nodes: GraphNode[]; links: GraphLink[] } {
  * Outer-ring labels point away from the centre. Inner-ring labels sit above or below their node,
  * since pointing outward would run them into the outer ring.
  */
-function labelPosition(d: GraphNode, r: number) {
+function labelPosition(d: GraphNode, r: number, mobile: boolean) {
   if (d.type === 'hub') return { x: 0, y: r + 18, anchor: 'middle' }
   const cos = Math.cos(d.angle)
   const sin = Math.sin(d.angle)
-  if (d.ring === 0 || Math.abs(cos) < 0.25) return { x: 0, y: sin < 0 ? -r - 8 : r + 16, anchor: 'middle' }
+  // Sideways labels would run off a narrow screen
+  if (mobile || d.ring === 0 || Math.abs(cos) < 0.25) return { x: 0, y: sin < 0 ? -r - 8 : r + 16, anchor: 'middle' }
   return { x: cos > 0 ? r + 7 : -r - 7, y: 4, anchor: cos > 0 ? 'start' : 'end' }
 }
 
@@ -101,9 +114,12 @@ function nodeMeta(d: GraphNode) {
 export default function NetworkGraph({
   selection,
   onSelect,
+  onPress,
 }: {
   selection: Selection | null
   onSelect: (id: string | null) => void
+  /** Any press on the canvas; d3's touch handling hides these from outside-click detection */
+  onPress?: () => void
 }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const svgRef = useRef<SVGSVGElement>(null)
@@ -115,6 +131,15 @@ export default function NetworkGraph({
   const onSelectRef = useRef(onSelect)
   const selectedIdRef = useRef<string | null>(null)
   const [hover, setHover] = useState<HoverState | null>(null)
+  const isMobile = useIsMobile()
+  const isLandscape = useIsLandscape()
+  const layout = !isMobile ? DESKTOP_LAYOUT : isLandscape ? LANDSCAPE_LAYOUT : PORTRAIT_LAYOUT
+  const homeRef = useRef(d3.zoomIdentity)
+  const [atHome, setAtHome] = useState(true)
+  // Pinch does the zooming on touch screens, and reset only appears once there's something to reset
+  const isTouch = useIsTouch()
+  const showZoomButtons = !(isMobile && isTouch)
+  const showReset = !isMobile || !atHome
 
   useEffect(() => {
     onSelectRef.current = onSelect
@@ -130,7 +155,7 @@ export default function NetworkGraph({
     const svg = d3.select(svgEl)
     svg.selectAll('*').remove()
 
-    const { nodes, links } = buildGraph()
+    const { nodes, links } = buildGraph(layout)
     const maxTotal = d3.max(nodes, (n) => (n.type === 'supporter' ? n.total : 0)) || 1
     const sizeScale = d3.scaleSqrt().domain([0, maxTotal]).range([8, 22])
     const radius = (d: GraphNode) => (d.type === 'hub' ? HUB_RADIUS : sizeScale(d.total))
@@ -140,7 +165,10 @@ export default function NetworkGraph({
     const zoom = d3
       .zoom<SVGSVGElement, unknown>()
       .scaleExtent([0.3, 4])
-      .on('zoom', (event) => g.attr('transform', event.transform))
+      .on('zoom', (event) => {
+        g.attr('transform', event.transform)
+        if (isMobile) setAtHome(sameView(event.transform, homeRef.current))
+      })
     zoomRef.current = zoom
     svg.call(zoom).on('dblclick.zoom', null)
 
@@ -208,6 +236,7 @@ export default function NetworkGraph({
     node.each(function (d) {
       const el = d3.select(this)
       const r = radius(d)
+      if (isMobile) el.append('circle').attr('class', 'fill-transparent').attr('r', r + MOBILE_HIT_SLOP)
       el.append('circle')
         .attr('class', 'ring fill-none stroke-primary opacity-0 transition-opacity')
         .attr('r', r + 5)
@@ -239,7 +268,7 @@ export default function NetworkGraph({
       .attr('font-size', (d) => (d.type === 'hub' ? 13 : 11))
       .attr('font-weight', (d) => (d.type === 'hub' || d.data.verified ? 600 : 400))
       .each(function (d) {
-        const pos = labelPosition(d, radius(d))
+        const pos = labelPosition(d, radius(d), isMobile)
         d3.select(this).attr('x', pos.x).attr('y', pos.y).attr('text-anchor', pos.anchor)
       })
 
@@ -275,6 +304,8 @@ export default function NetworkGraph({
         }
       })
       .on('mouseenter', function (_event, d) {
+        // Touch fires this on tap and never clears it; the sheet shows the details instead
+        if (isMobile) return
         hoverIdRef.current = d.id
         highlightRef.current(selectedIdRef.current, d.id)
         const box = this.getBoundingClientRect()
@@ -312,15 +343,17 @@ export default function NetworkGraph({
       const { width, height } = svgEl.getBoundingClientRect()
       // Measure the drawn content (labels included) rather than node centres
       const box = g.node()!.getBBox()
+      const padding = isMobile ? MOBILE_FIT_PADDING : FIT_PADDING
       const k = Math.min(
         1.2,
-        (width - FIT_PADDING * 2) / Math.max(1, box.width),
-        (height - FIT_PADDING * 2) / Math.max(1, box.height),
+        (width - padding * 2) / Math.max(1, box.width),
+        (height - padding * 2) / Math.max(1, box.height),
       )
       const t = d3.zoomIdentity
         .translate(width / 2, height / 2)
         .scale(k)
         .translate(-(box.x + box.width / 2), -(box.y + box.height / 2))
+      homeRef.current = t
       if (animate) svg.transition().duration(500).call(zoom.transform, t)
       else svg.call(zoom.transform, t)
     }
@@ -333,25 +366,35 @@ export default function NetworkGraph({
 
     highlightRef.current(selectedIdRef.current, null)
 
+    // The sheet settles the canvas size after mount
+    const observer = new ResizeObserver(() => fitRef.current(false))
+    if (isMobile) observer.observe(container)
+
     return () => {
       simulation.stop()
+      observer.disconnect()
       svg.on('.zoom', null).on('click', null)
     }
-  }, [])
+  }, [isMobile, layout])
 
   // Selection is driven from outside (graph clicks, search, detail links)
   useEffect(() => {
+    const hadSelection = selectedIdRef.current !== null
     selectedIdRef.current = selection?.id ?? null
     highlightRef.current(selectedIdRef.current, hoverIdRef.current)
+
+    // Mobile zooms in on a selection, so step back out once the sheet closes
+    if (isMobile && !selection && hadSelection) fitRef.current(true)
 
     if (!selection?.recenter || !svgRef.current || !zoomRef.current) return
     const node = nodesRef.current.find((n) => n.id === selection.id)
     if (!node || node.x === undefined || node.y === undefined) return
     const { width, height } = svgRef.current.getBoundingClientRect()
     const k = Math.max(1.4, d3.zoomTransform(svgRef.current).k)
-    const t = d3.zoomIdentity.translate(width / 2, height / 2).scale(k).translate(-node.x, -node.y)
+    const focusY = isMobile ? height * MOBILE_FOCUS_Y : height / 2
+    const t = d3.zoomIdentity.translate(width / 2, focusY).scale(k).translate(-node.x, -node.y)
     d3.select(svgRef.current).transition().duration(600).call(zoomRef.current.transform, t)
-  }, [selection])
+  }, [selection, isMobile])
 
   const zoomBy = useCallback((factor: number) => {
     if (!svgRef.current || !zoomRef.current) return
@@ -359,8 +402,8 @@ export default function NetworkGraph({
   }, [])
 
   return (
-    <div ref={containerRef} className="relative h-full w-full overflow-hidden bg-muted/30">
-      <svg ref={svgRef} className="h-full w-full" />
+    <div ref={containerRef} className="relative h-full w-full overflow-hidden bg-muted/30" onPointerDownCapture={onPress}>
+      <svg ref={svgRef} className="h-full w-full max-lg:touch-none" />
 
       {hover && (
         <div
@@ -372,19 +415,27 @@ export default function NetworkGraph({
         </div>
       )}
 
-      <div className="absolute bottom-4 left-4 flex flex-col gap-1 rounded-lg border bg-background p-1 shadow-sm">
-        <Button variant="ghost" size="icon-sm" onClick={() => zoomBy(1.4)} aria-label="Zoom in">
-          <PlusIcon />
-        </Button>
-        <Button variant="ghost" size="icon-sm" onClick={() => zoomBy(1 / 1.4)} aria-label="Zoom out">
-          <MinusIcon />
-        </Button>
-        <Button variant="ghost" size="icon-sm" onClick={() => fitRef.current(true)} aria-label="Fit graph to view">
-          <MaximizeIcon />
-        </Button>
-      </div>
+      {(showZoomButtons || showReset) && (
+        <div className="absolute bottom-4 left-4 flex flex-col gap-1 rounded-lg border bg-background p-1 shadow-sm max-lg:bottom-7 max-lg:left-3 max-lg:flex-row">
+          {showZoomButtons && (
+            <>
+              <Button variant="ghost" size="icon-sm" className="max-lg:size-10" onClick={() => zoomBy(1.4)} aria-label="Zoom in">
+                <PlusIcon />
+              </Button>
+              <Button variant="ghost" size="icon-sm" className="max-lg:size-10" onClick={() => zoomBy(1 / 1.4)} aria-label="Zoom out">
+                <MinusIcon />
+              </Button>
+            </>
+          )}
+          {showReset && (
+            <Button variant="ghost" size="icon-sm" className="max-lg:size-10" onClick={() => fitRef.current(true)} aria-label="Fit graph to view">
+              <MaximizeIcon />
+            </Button>
+          )}
+        </div>
+      )}
 
-      <p className="pointer-events-none absolute bottom-4 left-1/2 hidden -translate-x-1/2 rounded-full border bg-background/90 px-3 py-1 text-xs text-muted-foreground shadow-sm backdrop-blur md:block">
+      <p className="pointer-events-none absolute bottom-4 left-1/2 hidden -translate-x-1/2 rounded-full border bg-background/90 px-3 py-1 text-xs text-muted-foreground shadow-sm backdrop-blur lg:block">
         Drag to move · scroll to zoom · click a node for details
       </p>
     </div>

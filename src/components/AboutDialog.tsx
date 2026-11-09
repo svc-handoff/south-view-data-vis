@@ -13,12 +13,12 @@ export default function AboutDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="sm" className="justify-start">
+        <Button variant="ghost" size="sm" className="justify-start max-lg:h-10 max-sm:w-10 max-sm:justify-center max-sm:px-0">
           <InfoIcon />
-          About
+          <span className="max-sm:sr-only">About</span>
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-lg">
+      <DialogContent className="sm:max-w-lg max-lg:max-h-[85dvh] max-lg:overflow-y-auto">
         <DialogHeader>
           <DialogTitle>About this project</DialogTitle>
           <DialogDescription>
