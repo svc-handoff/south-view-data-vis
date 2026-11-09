@@ -1,5 +1,6 @@
 import { BadgeCheckIcon, ExternalLinkIcon, XIcon } from 'lucide-react'
 import { useMemo, useState, type RefObject } from 'react'
+import BottomSheet, { type SheetSnap } from '@/components/BottomSheet'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -14,6 +15,7 @@ import {
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Separator } from '@/components/ui/separator'
 import { supporters } from '@/data'
+import { useIsMobile } from '@/hooks/useIsMobile'
 import { CATEGORIES, CATEGORY_STYLES, formatUSD, givingYears, totalGiving } from '@/lib/supporters'
 import { cn } from '@/lib/utils'
 import type { Supporter } from '@/types'
@@ -25,9 +27,11 @@ const byTotal = [...supporters].sort((a, b) => totalGiving(b) - totalGiving(a))
 function Search({
   inputRef,
   onSelect,
+  onFocus,
 }: {
   inputRef: RefObject<HTMLInputElement | null>
   onSelect: (id: string) => void
+  onFocus?: () => void
 }) {
   const [query, setQuery] = useState('')
   const [focused, setFocused] = useState(false)
@@ -40,19 +44,23 @@ function Search({
   }
 
   return (
-    <div className="relative">
+    // 16px text stops iOS Safari from zooming the page when the field takes focus
+    <div className="relative max-lg:**:data-[slot=command-input]:text-base max-lg:**:data-[slot=input-group]:h-11!">
       <Command className="overflow-visible bg-transparent p-0">
         <CommandInput
           ref={inputRef}
           value={query}
           onValueChange={setQuery}
-          onFocus={() => setFocused(true)}
+          onFocus={() => {
+            setFocused(true)
+            onFocus?.()
+          }}
           // Let item clicks land before the list unmounts
           onBlur={() => setTimeout(() => setFocused(false), 120)}
           placeholder="Search sponsors and donors…"
         />
         {open && (
-          <CommandList className="absolute inset-x-0 top-full z-20 mt-1 max-h-72 rounded-lg border bg-popover shadow-md">
+          <CommandList className="absolute inset-x-0 top-full z-20 mt-1 max-h-72 rounded-lg border bg-popover shadow-md max-lg:max-h-[40dvh]">
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup heading="Supporters">
               {supporters.map((s) => (
@@ -66,7 +74,7 @@ function Search({
           </CommandList>
         )}
       </Command>
-      <kbd className="pointer-events-none absolute top-1/2 right-2.5 hidden -translate-y-1/2 rounded border bg-muted px-1.5 font-sans text-[10px] text-muted-foreground sm:block">
+      <kbd className="pointer-events-none absolute top-1/2 right-2.5 hidden -translate-y-1/2 rounded border bg-muted px-1.5 font-sans text-[10px] text-muted-foreground lg:block">
         {isMac ? '⌘K' : 'Ctrl K'}
       </kbd>
     </div>
@@ -99,7 +107,7 @@ function SupporterDetail({ supporter, onClose }: { supporter: Supporter; onClose
           {supporter.category} · {supporter.relationship === 'sponsor' ? 'Sponsor' : 'Donor'}
         </CardDescription>
         <CardAction>
-          <Button variant="ghost" size="icon-sm" onClick={onClose} aria-label="Close details">
+          <Button variant="ghost" size="icon-sm" className="max-lg:size-10" onClick={onClose} aria-label="Close details">
             <XIcon />
           </Button>
         </CardAction>
@@ -218,7 +226,7 @@ function CemeteryOverview({ onSelect }: { onSelect: (id: string) => void }) {
             <Button
               key={s.id}
               variant="ghost"
-              className="h-auto w-full justify-start gap-2 px-2 py-1.5"
+              className="h-auto w-full justify-start gap-2 px-2 py-1.5 max-lg:py-3"
               onClick={() => onSelect(s.id)}
             >
               <span className={cn('size-2 shrink-0 rounded-full', CATEGORY_STYLES[s.category].bg)} />
@@ -247,6 +255,40 @@ export default function NetworkPanel({
   onClose: () => void
 }) {
   const supporter = useMemo(() => supporters.find((s) => s.id === selectedId) ?? null, [selectedId])
+  const isMobile = useIsMobile()
+  const [snap, setSnap] = useState<SheetSnap>('peek')
+
+  // Picking a supporter brings their details up; clearing it gives the graph back
+  const [prevSelectedId, setPrevSelectedId] = useState(selectedId)
+  if (selectedId !== prevSelectedId) {
+    setPrevSelectedId(selectedId)
+    setSnap(selectedId ? 'half' : 'peek')
+  }
+
+  if (isMobile) {
+    return (
+      <BottomSheet
+        label="Supporters"
+        pinned={
+          <div className="mx-auto max-w-2xl px-4 pb-3">
+            {/* Full height keeps the field and its results clear of the on-screen keyboard */}
+            <Search inputRef={searchRef} onSelect={onSelect} onFocus={() => setSnap('full')} />
+          </div>
+        }
+        snap={snap}
+        onSnapChange={setSnap}
+        scrollKey={supporter?.id ?? 'overview'}
+      >
+        <div key={supporter?.id ?? 'overview'} className="animate-in fade-in-0 slide-in-from-right-2 mx-auto max-w-2xl p-4 pt-1 duration-200">
+          {supporter ? (
+            <SupporterDetail supporter={supporter} onClose={onClose} />
+          ) : (
+            <CemeteryOverview onSelect={onSelect} />
+          )}
+        </div>
+      </BottomSheet>
+    )
+  }
 
   return (
     <aside className="flex w-96 shrink-0 flex-col border-l bg-background">
