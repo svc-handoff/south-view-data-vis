@@ -14,21 +14,31 @@ import {
 } from '@/components/ui/command'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Separator } from '@/components/ui/separator'
-import { supporters } from '@/data'
 import { useIsMobile } from '@/hooks/useIsMobile'
-import { CATEGORIES, CATEGORY_STYLES, formatUSD, givingYears, totalGiving } from '@/lib/supporters'
+import {
+  CATEGORIES,
+  categoryStyle,
+  formatContribution,
+  formatTotal,
+  formatUSD,
+  givingYears,
+  relationshipLabel,
+  totalGiving,
+  UNCATEGORIZED,
+} from '@/lib/supporters'
 import { cn } from '@/lib/utils'
+import type { SupportersState } from '@/hooks/useSupporters'
 import type { Supporter } from '@/types'
 
 const isMac = typeof navigator !== 'undefined' && /Mac/i.test(navigator.platform)
 
-const byTotal = [...supporters].sort((a, b) => totalGiving(b) - totalGiving(a))
-
 function Search({
+  supporters,
   inputRef,
   onSelect,
   onFocus,
 }: {
+  supporters: Supporter[]
   inputRef: RefObject<HTMLInputElement | null>
   onSelect: (id: string) => void
   onFocus?: () => void
@@ -64,8 +74,12 @@ function Search({
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup heading="Supporters">
               {supporters.map((s) => (
-                <CommandItem key={s.id} value={`${s.name} ${s.category} ${s.relationship}`} onSelect={() => pick(s.id)}>
-                  <span className={cn('size-2 shrink-0 rounded-full', CATEGORY_STYLES[s.category].bg)} />
+                <CommandItem
+                  key={s.id}
+                  value={`${s.name} ${s.category ?? ''} ${s.relationship ?? ''} ${s.id}`}
+                  onSelect={() => pick(s.id)}
+                >
+                  <span className={cn('size-2 shrink-0 rounded-full', categoryStyle(s.category).bg)} />
                   <span className="truncate">{s.name}</span>
                   <span className="ml-auto text-xs text-muted-foreground">{s.category}</span>
                 </CommandItem>
@@ -81,31 +95,31 @@ function Search({
   )
 }
 
-function SourceBadge({ verified }: { verified: boolean }) {
-  return verified ? (
+function VerifiedBadge() {
+  return (
     <Badge className="w-fit">
       <BadgeCheckIcon />
       Verified
-    </Badge>
-  ) : (
-    <Badge variant="outline" className="w-fit text-muted-foreground">
-      Sample data
     </Badge>
   )
 }
 
 function SupporterDetail({ supporter, onClose }: { supporter: Supporter; onClose: () => void }) {
-  const total = totalGiving(supporter)
-  const contributions = [...supporter.contributions].sort((a, b) => b.year - a.year)
+  // Newest first; undated contributions last
+  const contributions = [...supporter.contributions].sort((a, b) => (b.year ?? -Infinity) - (a.year ?? -Infinity))
+  const role = relationshipLabel(supporter)
+  const meta = [supporter.category, role].filter(Boolean).join(' · ')
 
   return (
     <Card>
       <CardHeader>
         <CardTitle className="text-lg">{supporter.name}</CardTitle>
-        <CardDescription className="flex items-center gap-1.5">
-          <span className={cn('size-2 rounded-full', CATEGORY_STYLES[supporter.category].bg)} />
-          {supporter.category} · {supporter.relationship === 'sponsor' ? 'Sponsor' : 'Donor'}
-        </CardDescription>
+        {meta && (
+          <CardDescription className="flex items-center gap-1.5">
+            <span className={cn('size-2 rounded-full', categoryStyle(supporter.category).bg)} />
+            {meta}
+          </CardDescription>
+        )}
         <CardAction>
           <Button variant="ghost" size="icon-sm" className="max-lg:size-10" onClick={onClose} aria-label="Close details">
             <XIcon />
@@ -113,20 +127,22 @@ function SupporterDetail({ supporter, onClose }: { supporter: Supporter; onClose
         </CardAction>
       </CardHeader>
       <CardContent>
-        <SourceBadge verified={supporter.verified} />
-        <p className="text-sm leading-relaxed text-muted-foreground">{supporter.description}</p>
+        {supporter.verified && <VerifiedBadge />}
+        {supporter.description && (
+          <p className="text-sm leading-relaxed text-muted-foreground">{supporter.description}</p>
+        )}
 
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-1">
             <p className="text-xs text-muted-foreground">Total given</p>
             <p className="text-xl font-semibold tabular-nums tracking-tight">
-              {total > 0 ? formatUSD(total) : 'In-kind'}
+              {formatTotal(supporter)}
             </p>
           </div>
           <div className="space-y-1">
             <p className="text-xs text-muted-foreground">Supporting since</p>
             <p className="text-xl font-semibold tabular-nums tracking-tight">
-              {Math.min(...supporter.contributions.map((c) => c.year))}
+              {supporter.supportingSince ?? '—'}
             </p>
           </div>
         </div>
@@ -137,9 +153,9 @@ function SupporterDetail({ supporter, onClose }: { supporter: Supporter; onClose
           <ul className="space-y-3">
             {contributions.map((c, i) => (
               <li key={i} className="flex gap-3 text-sm">
-                <span className="w-10 shrink-0 tabular-nums text-muted-foreground">{c.year}</span>
-                <span className="min-w-0 flex-1">{c.purpose}</span>
-                <span className="shrink-0 font-medium tabular-nums">{formatUSD(c.amount)}</span>
+                <span className="w-10 shrink-0 tabular-nums text-muted-foreground">{c.year ?? '—'}</span>
+                <span className="min-w-0 flex-1 break-words">{c.purpose}</span>
+                <span className="shrink-0 font-medium tabular-nums">{formatContribution(c)}</span>
               </li>
             ))}
           </ul>
@@ -173,10 +189,19 @@ function SupporterDetail({ supporter, onClose }: { supporter: Supporter; onClose
   )
 }
 
-function CemeteryOverview({ onSelect }: { onSelect: (id: string) => void }) {
+function CemeteryOverview({ data, onSelect }: { data: SupportersState; onSelect: (id: string) => void }) {
+  const { supporters, status } = data
   const total = supporters.reduce((sum, s) => sum + totalGiving(s), 0)
   const verified = supporters.filter((s) => s.verified).length
-  const counts = CATEGORIES.map((c) => ({ category: c, count: supporters.filter((s) => s.category === c).length }))
+  const counts = [
+    ...CATEGORIES.map((c) => ({
+      label: c as string,
+      bg: categoryStyle(c).bg,
+      count: supporters.filter((s) => s.category === c).length,
+    })),
+    { label: UNCATEGORIZED, bg: categoryStyle(null).bg, count: supporters.filter((s) => !s.category).length },
+  ].filter((c) => c.label !== UNCATEGORIZED || c.count > 0)
+  const byTotal = [...supporters].sort((a, b) => totalGiving(b) - totalGiving(a))
 
   return (
     <div className="space-y-4">
@@ -184,6 +209,17 @@ function CemeteryOverview({ onSelect }: { onSelect: (id: string) => void }) {
         <h2 className="text-2xl font-semibold tracking-tight">South-View Cemetery</h2>
         <p className="text-sm text-muted-foreground">Sponsors and donors</p>
       </div>
+
+      {status === 'loading' && supporters.length === 0 && (
+        <p className="px-1 text-sm text-muted-foreground">Loading supporters…</p>
+      )}
+      {status === 'error' && (
+        <p className="px-1 text-sm text-muted-foreground">
+          {supporters.length > 0
+            ? 'Couldn’t refresh supporters; showing the last loaded list.'
+            : 'Couldn’t load supporters. Retrying shortly.'}
+        </p>
+      )}
 
       <Card>
         <CardContent className="grid grid-cols-2 gap-x-4 gap-y-5">
@@ -195,9 +231,11 @@ function CemeteryOverview({ onSelect }: { onSelect: (id: string) => void }) {
             <p className="text-xs text-muted-foreground">Recorded giving</p>
             <p className="text-xl font-semibold tabular-nums tracking-tight">{formatUSD(total)}</p>
           </div>
-          <p className="col-span-2 text-xs text-muted-foreground">
-            {verified} of {supporters.length} supporters verified.
-          </p>
+          {verified > 0 && (
+            <p className="col-span-2 text-xs text-muted-foreground">
+              {verified} of {supporters.length} supporters verified.
+            </p>
+          )}
         </CardContent>
       </Card>
 
@@ -206,10 +244,10 @@ function CemeteryOverview({ onSelect }: { onSelect: (id: string) => void }) {
           <CardTitle className="text-sm">By type</CardTitle>
         </CardHeader>
         <CardContent className="gap-2">
-          {counts.map(({ category, count }) => (
-            <div key={category} className="flex items-center gap-2 text-sm">
-              <span className={cn('size-2.5 rounded-full', CATEGORY_STYLES[category].bg)} />
-              <span>{category}</span>
+          {counts.map(({ label, bg, count }) => (
+            <div key={label} className="flex items-center gap-2 text-sm">
+              <span className={cn('size-2.5 rounded-full', bg)} />
+              <span>{label}</span>
               <span className="ml-auto tabular-nums text-muted-foreground">{count}</span>
             </div>
           ))}
@@ -229,11 +267,11 @@ function CemeteryOverview({ onSelect }: { onSelect: (id: string) => void }) {
               className="h-auto w-full justify-start gap-2 px-2 py-1.5 max-lg:py-3"
               onClick={() => onSelect(s.id)}
             >
-              <span className={cn('size-2 shrink-0 rounded-full', CATEGORY_STYLES[s.category].bg)} />
+              <span className={cn('size-2 shrink-0 rounded-full', categoryStyle(s.category).bg)} />
               <span className="truncate text-sm font-medium">{s.name}</span>
               {s.verified && <BadgeCheckIcon className="size-3.5 shrink-0" aria-label="Verified" />}
               <span className="ml-auto shrink-0 pl-2 text-xs font-normal tabular-nums text-muted-foreground">
-                {totalGiving(s) > 0 ? formatUSD(totalGiving(s)) : 'In-kind'} · {givingYears(s)}
+                {[formatTotal(s), givingYears(s)].filter(Boolean).join(' · ')}
               </span>
             </Button>
           ))}
@@ -244,17 +282,20 @@ function CemeteryOverview({ onSelect }: { onSelect: (id: string) => void }) {
 }
 
 export default function NetworkPanel({
+  data,
   selectedId,
   searchRef,
   onSelect,
   onClose,
 }: {
+  data: SupportersState
   selectedId: string | null
   searchRef: RefObject<HTMLInputElement | null>
   onSelect: (id: string) => void
   onClose: () => void
 }) {
-  const supporter = useMemo(() => supporters.find((s) => s.id === selectedId) ?? null, [selectedId])
+  const supporters = data.supporters
+  const supporter = useMemo(() => supporters.find((s) => s.id === selectedId) ?? null, [supporters, selectedId])
   const isMobile = useIsMobile()
   const [snap, setSnap] = useState<SheetSnap>('peek')
 
@@ -272,7 +313,7 @@ export default function NetworkPanel({
         pinned={
           <div className="mx-auto max-w-2xl px-4 pb-3">
             {/* Full height keeps the field and its results clear of the on-screen keyboard */}
-            <Search inputRef={searchRef} onSelect={onSelect} onFocus={() => setSnap('full')} />
+            <Search supporters={supporters} inputRef={searchRef} onSelect={onSelect} onFocus={() => setSnap('full')} />
           </div>
         }
         snap={snap}
@@ -283,7 +324,7 @@ export default function NetworkPanel({
           {supporter ? (
             <SupporterDetail supporter={supporter} onClose={onClose} />
           ) : (
-            <CemeteryOverview onSelect={onSelect} />
+            <CemeteryOverview data={data} onSelect={onSelect} />
           )}
         </div>
       </BottomSheet>
@@ -293,14 +334,14 @@ export default function NetworkPanel({
   return (
     <aside className="flex w-96 shrink-0 flex-col border-l bg-background">
       <div className="border-b p-4">
-        <Search inputRef={searchRef} onSelect={onSelect} />
+        <Search supporters={supporters} inputRef={searchRef} onSelect={onSelect} />
       </div>
       <ScrollArea className="min-h-0 flex-1">
         <div key={supporter?.id ?? 'overview'} className="animate-in fade-in-0 slide-in-from-right-2 p-4 duration-200">
           {supporter ? (
             <SupporterDetail supporter={supporter} onClose={onClose} />
           ) : (
-            <CemeteryOverview onSelect={onSelect} />
+            <CemeteryOverview data={data} onSelect={onSelect} />
           )}
         </div>
       </ScrollArea>

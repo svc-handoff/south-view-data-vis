@@ -6,7 +6,8 @@ import NetworkPanel from '@/components/NetworkPanel'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { useIsMobile } from '@/hooks/useIsMobile'
-import { CATEGORIES, CATEGORY_STYLES } from '@/lib/supporters'
+import { useSupporters } from '@/hooks/useSupporters'
+import { CATEGORIES, categoryStyle, UNCATEGORIZED } from '@/lib/supporters'
 import { cn } from '@/lib/utils'
 
 function LegendItem({ children, swatch }: { children: React.ReactNode; swatch: React.ReactNode }) {
@@ -26,26 +27,48 @@ function EdgeSwatch({ dash }: { dash?: string }) {
   )
 }
 
-function CategoryLegend() {
-  return CATEGORIES.map((c) => (
-    <LegendItem key={c} swatch={<span className={cn('size-2.5 rounded-full', CATEGORY_STYLES[c].bg)} />}>
-      {c}
-    </LegendItem>
-  ))
+function CategoryLegend({ uncategorized }: { uncategorized: boolean }) {
+  return (
+    <>
+      {CATEGORIES.map((c) => (
+        <LegendItem key={c} swatch={<span className={cn('size-2.5 rounded-full', categoryStyle(c).bg)} />}>
+          {c}
+        </LegendItem>
+      ))}
+      {uncategorized && (
+        <LegendItem swatch={<span className={cn('size-2.5 rounded-full', categoryStyle(null).bg)} />}>
+          {UNCATEGORIZED}
+        </LegendItem>
+      )}
+    </>
+  )
 }
 
-function EncodingLegend() {
+function EncodingLegend({ verified }: { verified: boolean }) {
   return (
     <>
       <LegendItem swatch={<EdgeSwatch />}>Donor</LegendItem>
       <LegendItem swatch={<EdgeSwatch dash="5,3" />}>Sponsor</LegendItem>
-      <LegendItem swatch={<BadgeCheckIcon className="size-3.5 text-foreground" />}>Verified</LegendItem>
+      {verified && <LegendItem swatch={<BadgeCheckIcon className="size-3.5 text-foreground" />}>Verified</LegendItem>}
       <span>Node size = total given</span>
     </>
   )
 }
 
-function MobileLegend({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void }) {
+interface LegendFlags {
+  uncategorized: boolean
+  verified: boolean
+}
+
+function MobileLegend({
+  open,
+  onOpenChange,
+  flags,
+}: {
+  open: boolean
+  onOpenChange: (open: boolean) => void
+  flags: LegendFlags
+}) {
   return (
     <PopoverPrimitive.Root open={open} onOpenChange={onOpenChange}>
       <div className="absolute right-3 bottom-7 rounded-lg border bg-background p-1 shadow-sm">
@@ -66,11 +89,11 @@ function MobileLegend({ open, onOpenChange }: { open: boolean; onOpenChange: (op
           className="z-50 w-72 space-y-3 rounded-xl bg-popover p-4 text-xs text-muted-foreground shadow-md ring-1 ring-foreground/10 outline-none data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95"
         >
           <div className="grid grid-cols-2 gap-x-4 gap-y-2.5">
-            <CategoryLegend />
+            <CategoryLegend uncategorized={flags.uncategorized} />
           </div>
           <Separator />
           <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 *:last:col-span-2">
-            <EncodingLegend />
+            <EncodingLegend verified={flags.verified} />
           </div>
         </PopoverPrimitive.Content>
       </PopoverPrimitive.Portal>
@@ -83,6 +106,11 @@ export default function NetworkGraphView() {
   const searchRef = useRef<HTMLInputElement>(null)
   const isMobile = useIsMobile()
   const [legendOpen, setLegendOpen] = useState(false)
+  const data = useSupporters()
+  const flags: LegendFlags = {
+    uncategorized: data.supporters.some((s) => !s.category),
+    verified: data.supporters.some((s) => s.verified),
+  }
 
   const select = useCallback((id: string | null, recenter = false) => {
     setSelection(id ? { id, recenter } : null)
@@ -105,9 +133,9 @@ export default function NetworkGraphView() {
     <div className="flex h-full flex-col">
       {!isMobile && (
         <div className="flex shrink-0 flex-wrap items-center justify-center gap-x-5 gap-y-2 border-b py-3 pr-4 pl-52 text-xs text-muted-foreground">
-          <CategoryLegend />
+          <CategoryLegend uncategorized={flags.uncategorized} />
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-            <EncodingLegend />
+            <EncodingLegend verified={flags.verified} />
           </div>
         </div>
       )}
@@ -115,10 +143,13 @@ export default function NetworkGraphView() {
       <div className="flex min-h-0 flex-1 max-lg:relative max-lg:flex-col max-lg:overflow-hidden">
         <div className="min-w-0 flex-1 max-lg:relative max-lg:min-h-0">
           {/* On mobile a tapped node could end up behind the details sheet, so bring it into view */}
-          <NetworkGraph selection={selection} onSelect={(id) => select(id, isMobile)} onPress={() => setLegendOpen(false)} />
-          {isMobile && <MobileLegend open={legendOpen} onOpenChange={setLegendOpen} />}
+          <NetworkGraph
+            supporters={data.supporters}
+            selection={selection} onSelect={(id) => select(id, isMobile)} onPress={() => setLegendOpen(false)} />
+          {isMobile && <MobileLegend open={legendOpen} onOpenChange={setLegendOpen} flags={flags} />}
         </div>
         <NetworkPanel
+          data={data}
           selectedId={selection?.id ?? null}
           searchRef={searchRef}
           onSelect={(id) => select(id, true)}
