@@ -2,7 +2,7 @@
 
 An interactive data visualization tool for exploring the history and community of [South-View Cemetery](https://www.southviewpreservation.com/) (1990 Jonesboro Rd SE, Atlanta, GA 30315). The app has two pages: a timeline map of how the cemetery's grounds grew, and a network of the sponsors and donors who support it.
 
-**Live site:** <https://south-view-data-vis.vercel.app>
+**Live site:** <https://south-view-data-visualization.vercel.app/>
 
 > **Note:** Some content is still sample data, including all notable figures. See [Data status](#data-status) before publishing or relying on any of it.
 
