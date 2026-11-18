@@ -117,7 +117,7 @@ src/
 │   ├── index.ts             # Re-exports typed JSON data
 │   ├── map_snapshots.json   # 6 dated footprints (1888–1977) with acreage and context
 │   ├── memorials.json       # Find a Grave memorial counts by timeline year
-│   ├── individuals.json     # notable figures
+│   ├── individuals.json     # not shown
 │   ├── supporters.json      # sponsors and donors
 │   └── events.json          # historical events (not displayed)
 ├── views/
