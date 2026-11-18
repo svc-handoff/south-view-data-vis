@@ -4,8 +4,6 @@ An interactive data visualization tool for exploring the history and community o
 
 **Live site:** <https://south-view-data-visualization.vercel.app/>
 
-> **Note:** Some content is still sample data, including all notable figures. See [Data status](#data-status) before publishing or relying on any of it.
-
 ## Contents
 
 - [Quick start](#quick-start)
@@ -119,9 +117,9 @@ src/
 │   ├── index.ts             # Re-exports typed JSON data
 │   ├── map_snapshots.json   # 6 dated footprints (1888–1977) with acreage and context
 │   ├── memorials.json       # Find a Grave memorial counts by timeline year
-│   ├── individuals.json     # 30 sample people (hidden from visitors)
-│   ├── supporters.json      # 21 sponsors and donors
-│   └── events.json          # 6 sample historical events (not displayed)
+│   ├── individuals.json     # notable figures
+│   ├── supporters.json      # sponsors and donors
+│   └── events.json          # historical events (not displayed)
 ├── views/
 │   ├── MapView.tsx          # Leaflet map, timeline, legend and footprint rings
 │   └── NetworkGraphView.tsx # Network key, graph and side panel
@@ -150,9 +148,9 @@ STEERING.md                  # Original build plan, kept for history and now out
 | Historical context | Real: written from those same records |
 | Cemetery size | Stored per date; each figure is within 0.3 acres of the area of its drawn footprint. Not separately checked against survey records. |
 | Burial records | Online memorial counts from [Find a Grave](https://www.findagrave.com/cemetery/37101), accessed October 26, 2026. Not official burial totals. |
-| Notable figures | **Sample:** invented people. Hidden from visitors by `SHOW_NOTABLE_FIGURES`. |
-| `total_burials`, `gender`, `avg_age_at_death` | **Sample:** stored in `map_snapshots.json` but not displayed |
-| Events | **Sample:** stored in `events.json` but not displayed |
+| Notable figures | Links to Wix website. Hidden from visitors by `SHOW_NOTABLE_FIGURES`. |
+| `total_burials`, `gender`, `avg_age_at_death` | stored in `map_snapshots.json` but not displayed |
+| Events | stored in `events.json` but not displayed |
 | City of Atlanta, Atlanta Preservation Center | Real: `verified: true`, with public sources linked |
 | Walter Pierce | `verified: true` and added as a real supporter, but no `sources` are listed. The commit that added him refers to <https://givebutter.com/south-view-cemetery-nqvhuj>. |
 | William Allison ($1,000), Jason Bryant ($500), RunningNerd ($100) | `verified: true` on the project team's say-so; no `sources` listed. Year is set to 2026 as a placeholder. |
