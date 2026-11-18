@@ -1,6 +1,7 @@
 import { UserIcon } from 'lucide-react'
 import { useMemo, useState, type ReactNode } from 'react'
 import BottomSheet, { type SheetSnap } from '@/components/BottomSheet'
+import PeriodHistory from '@/components/PeriodHistory'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -90,7 +91,7 @@ export default function MapSidebar({
             <CardTitle className="text-sm">Historical context</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm leading-relaxed text-muted-foreground">{historical_context}</p>
+            <PeriodHistory year={snapshot.year} landNote={historical_context} />
           </CardContent>
         </Card>
 

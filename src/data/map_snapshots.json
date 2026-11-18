@@ -7,7 +7,7 @@
       "gender": { "Male": 30, "Female": 18 },
       "avg_age_at_death": 42,
       "cemetery_acreage": 29.6,
-      "historical_context": "On May 2, 1888, the South View Cemetery Association bought the original part of the cemetery on the east side of Jonesboro Road. This section stayed in use until about 1991."
+      "historical_context": "On May 2, 1888, the South View Cemetery Association bought the original part of the cemetery on the east side of Jonesboro Road."
     },
     "footprint": [
       [33.698742, -84.36896],
@@ -24,7 +24,7 @@
       "gender": { "Male": 88, "Female": 57 },
       "avg_age_at_death": 44,
       "cemetery_acreage": 34.2,
-      "historical_context": "On December 1, 1902, the Association bought the ~5-acre \"South View Addition\" running along the right-of-way of the A&K Railroad. The railroad line was the cemetery's easternmost edge until around 1957."
+      "historical_context": "On December 1, 1902, the Association bought the ~5-acre \"South View Addition\" running along the right-of-way of the A&K Railroad."
     },
     "footprint": [
       [33.698739, -84.36876],
