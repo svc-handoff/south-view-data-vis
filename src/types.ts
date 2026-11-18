@@ -29,6 +29,23 @@ export interface Individual {
   events: EventLink[]
 }
 
+/** A person featured on the Foundation's "History in the Neighborhood" page */
+export interface NotableFigure {
+  id: string
+  name: string
+  role: string
+  /** ISO date, possibly partial: "YYYY", "YYYY-MM" or "YYYY-MM-DD" (partial when sources disagree or lack detail) */
+  birth: string
+  death: string
+  /** Interment at South-View, same format; the funeral date where no separate interment date is recorded */
+  burial: string
+  /** true when no burial or funeral date was found and `burial` is the year of death */
+  burial_estimated: boolean
+  note?: string
+  bio_url: string
+  sources: string[]
+}
+
 export interface CemeteryEvent {
   id: string
   name: string

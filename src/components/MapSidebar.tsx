@@ -1,21 +1,17 @@
-import { UserIcon } from 'lucide-react'
+import { ExternalLinkIcon } from 'lucide-react'
 import { useMemo, useState, type ReactNode } from 'react'
 import BottomSheet, { type SheetSnap } from '@/components/BottomSheet'
 import PeriodHistory from '@/components/PeriodHistory'
 import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { individuals } from '@/data'
+import { mapSnapshots, notableFigures } from '@/data'
 import memorials from '@/data/memorials.json'
 import { useIsMobile } from '@/hooks/useIsMobile'
-import type { Individual, MapSnapshot } from '@/types'
-
-// Flip to true once individuals.json contains real, sourced people
-const SHOW_NOTABLE_FIGURES = false
+import type { MapSnapshot } from '@/types'
 
 const memorialCounts = memorials.counts as Record<string, { count: number; scope: string }>
+const LAST_SNAPSHOT = mapSnapshots[mapSnapshots.length - 1]
 
 function Stat({ label, value, suffix }: { label: string; value: string | number; suffix?: string }) {
   return (
@@ -29,29 +25,6 @@ function Stat({ label, value, suffix }: { label: string; value: string | number;
   )
 }
 
-function FigureDialog({ person, onClose }: { person: Individual | null; onClose: () => void }) {
-  return (
-    <Dialog open={person !== null} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="sm:max-w-md max-lg:max-h-[85dvh] max-lg:overflow-y-auto">
-        {person && (
-          <>
-            <DialogHeader>
-              <DialogTitle>{person.name}</DialogTitle>
-              <DialogDescription>
-                {person.birth}–{person.death} · {person.demographics.occupation}
-              </DialogDescription>
-            </DialogHeader>
-            <p className="text-sm leading-relaxed text-muted-foreground">{person.bio}</p>
-            <p className="text-xs text-muted-foreground">
-              Section {person.section}, Plot {person.plot}
-            </p>
-          </>
-        )}
-      </DialogContent>
-    </Dialog>
-  )
-}
-
 export default function MapSidebar({
   snapshot,
   label,
@@ -62,15 +35,15 @@ export default function MapSidebar({
   /** Stays in view above the details on mobile */
   pinned?: ReactNode
 }) {
-  const [selected, setSelected] = useState<Individual | null>(null)
   const [snap, setSnap] = useState<SheetSnap>('peek')
   const isMobile = useIsMobile()
 
+  // Figures interred by this date; the last snapshot runs to the present, so it shows everyone
   const notables = useMemo(
     () =>
-      snapshot.notable_figures
-        .map((id) => individuals.find((p) => p.id === id))
-        .filter((p): p is Individual => p !== undefined && p.death <= snapshot.year),
+      snapshot === LAST_SNAPSHOT
+        ? notableFigures
+        : notableFigures.filter((f) => Number(f.burial.slice(0, 4)) <= snapshot.year),
     [snapshot],
   )
 
@@ -128,68 +101,53 @@ export default function MapSidebar({
           </Card>
         )}
 
-        {SHOW_NOTABLE_FIGURES ? (
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-sm">Notable figures</CardTitle>
-              <CardDescription>Select a name to read their story.</CardDescription>
-            </CardHeader>
-            <CardContent className="gap-1">
-              {notables.map((person) => (
-                <Button
-                  key={person.id}
-                  variant="ghost"
-                  className="h-auto w-full justify-start gap-3 px-2 py-2 text-left"
-                  onClick={() => setSelected(person)}
-                >
-                  <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground">
-                    <UserIcon className="size-4" />
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-sm">Notable figures</CardTitle>
+            <CardDescription>Buried here by this date. Select a name to read their story.</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-0.5 px-4">
+            {notables.map((figure) => (
+              <a
+                key={figure.id}
+                href={figure.bio_url}
+                target="_blank"
+                rel="noreferrer"
+                className="group flex items-start gap-2 rounded-md px-2 py-2 transition-colors hover:bg-muted focus-visible:bg-muted focus-visible:outline-none"
+              >
+                <span className="min-w-0 flex-1">
+                  <span className="block text-sm font-medium group-hover:underline group-hover:underline-offset-4">
+                    {figure.name}
                   </span>
-                  <span className="min-w-0">
-                    <span className="block truncate text-sm font-medium">{person.name}</span>
-                    <span className="block truncate text-xs font-normal text-muted-foreground">
-                      {person.birth}–{person.death} · {person.demographics.occupation}
-                    </span>
+                  <span className="block text-xs tabular-nums text-muted-foreground">
+                    {figure.birth.slice(0, 4)}–{figure.death.slice(0, 4)}
                   </span>
-                </Button>
-              ))}
-              {notables.length === 0 && (
-                <Badge variant="secondary" className="w-fit">None yet in this period</Badge>
-              )}
-            </CardContent>
-          </Card>
-        ) : (
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-sm">Notable figures</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                Biographies are being compiled with the Foundation and will appear here once they are
-                verified.
-              </p>
-            </CardContent>
-          </Card>
-        )}
+                  {figure.note && (
+                    <span className="block text-xs italic text-muted-foreground">{figure.note}</span>
+                  )}
+                </span>
+                <ExternalLinkIcon className="mt-0.5 size-3.5 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100" />
+              </a>
+            ))}
+            {notables.length === 0 && (
+              <Badge variant="secondary" className="w-fit">None yet in this period</Badge>
+            )}
+          </CardContent>
+        </Card>
     </div>
   )
-  const dialog = <FigureDialog person={selected} onClose={() => setSelected(null)} />
 
   if (isMobile) {
     return (
-      <>
-        <BottomSheet label="Cemetery snapshot" pinned={pinned} snap={snap} onSnapChange={setSnap}>
-          {details}
-        </BottomSheet>
-        {dialog}
-      </>
+      <BottomSheet label="Cemetery snapshot" pinned={pinned} snap={snap} onSnapChange={setSnap}>
+        {details}
+      </BottomSheet>
     )
   }
 
   return (
     <aside className="flex w-96 shrink-0 flex-col border-l bg-background">
       <ScrollArea className="min-h-0 flex-1">{details}</ScrollArea>
-      {dialog}
     </aside>
   )
 }

@@ -1,0 +1,277 @@
+[
+  {
+    "id": "robert-grant",
+    "name": "Robert Grant",
+    "role": "Founder of Zion Hill Baptist Church & South-View Cemetery",
+    "birth": "1826",
+    "death": "1896",
+    "burial": "1896",
+    "burial_estimated": true,
+    "bio_url": "https://www.southviewpreservation.com/robertgrant",
+    "sources": ["https://www.findagrave.com/memorial/198178072/robert-grant"]
+  },
+  {
+    "id": "alonzo-herndon",
+    "name": "Alonzo Herndon",
+    "role": "Business leader & Atlanta Life Insurance founder",
+    "birth": "1858-06-26",
+    "death": "1927-07-21",
+    "burial": "1927",
+    "burial_estimated": true,
+    "bio_url": "https://www.southviewpreservation.com/alonzoherndon",
+    "sources": [
+      "https://www.findagrave.com/memorial/6931098/alonzo-franklin-herndon",
+      "https://en.wikipedia.org/wiki/Alonzo_Herndon"
+    ]
+  },
+  {
+    "id": "moses-amos",
+    "name": "Dr. Moses Amos",
+    "role": "Pharmacist",
+    "birth": "1866-06-08",
+    "death": "1928-06-05",
+    "burial": "1928",
+    "burial_estimated": true,
+    "bio_url": "https://www.southviewpreservation.com/mosesamos",
+    "sources": ["https://www.findagrave.com/memorial/95181735/moses-amos"]
+  },
+  {
+    "id": "william-h-crogman",
+    "name": "William H. Crogman",
+    "role": "Educator",
+    "birth": "1841-05-05",
+    "death": "1931-10",
+    "burial": "1931",
+    "burial_estimated": true,
+    "bio_url": "https://www.southviewpreservation.com/williamhcrogman",
+    "sources": [
+      "https://www.findagrave.com/memorial/95181583/william-henry-crogman",
+      "https://en.wikipedia.org/wiki/William_H._Crogman"
+    ]
+  },
+  {
+    "id": "dinah-watts-pace",
+    "name": "Dinah Watts Pace",
+    "role": "Educator",
+    "birth": "1853-01-09",
+    "death": "1933-01-25",
+    "burial": "1933",
+    "burial_estimated": true,
+    "bio_url": "https://www.southviewpreservation.com/dinahwattspace",
+    "sources": [
+      "https://www.findagrave.com/memorial/131365861/dinah-pace",
+      "https://en.wikipedia.org/wiki/Dinah_Watts_Pace"
+    ]
+  },
+  {
+    "id": "john-w-e-bowen",
+    "name": "John W. E. Bowen",
+    "role": "Religious leader & professor",
+    "birth": "1855-12-03",
+    "death": "1933-07",
+    "burial": "1933",
+    "burial_estimated": true,
+    "bio_url": "https://www.southviewpreservation.com/johnwebowen",
+    "sources": [
+      "https://www.findagrave.com/memorial/147553126/john-wesley_edward-bowen",
+      "https://en.wikipedia.org/wiki/John_W._E._Bowen_Sr."
+    ]
+  },
+  {
+    "id": "john-w-dobbs",
+    "name": "John W. Dobbs",
+    "role": "Civic & political leader",
+    "birth": "1882-03-06",
+    "death": "1961-08-30",
+    "burial": "1961",
+    "burial_estimated": true,
+    "bio_url": "https://www.southviewpreservation.com/johnwdobbs",
+    "sources": [
+      "https://www.findagrave.com/memorial/12599889/john-wesley-dobbs",
+      "https://kinginstitute.stanford.edu/dobbs-john-wesley"
+    ]
+  },
+  {
+    "id": "ludie-clay-andrews",
+    "name": "Ludie Clay Andrews",
+    "role": "Nurse",
+    "birth": "1874-03-03",
+    "death": "1969-01-06",
+    "burial": "1969",
+    "burial_estimated": true,
+    "bio_url": "https://www.southviewpreservation.com/ludieclayandrews",
+    "sources": [
+      "https://www.findagrave.com/memorial/187931400/ludie-c-andrews",
+      "https://en.wikipedia.org/wiki/Ludie_Clay_Andrews"
+    ]
+  },
+  {
+    "id": "horace-mann-bond",
+    "name": "Horace Mann Bond",
+    "role": "Educator",
+    "birth": "1904-11-08",
+    "death": "1972-12-21",
+    "burial": "1972",
+    "burial_estimated": true,
+    "bio_url": "https://www.southviewpreservation.com/horacemannbond",
+    "sources": [
+      "https://www.findagrave.com/memorial/18840/horace-mann-bond",
+      "https://en.wikipedia.org/wiki/Horace_Mann_Bond"
+    ]
+  },
+  {
+    "id": "geneva-haugabrooks",
+    "name": "Geneva Haugabrooks",
+    "role": "Entrepreneur & teacher",
+    "birth": "1888-02-07",
+    "death": "1977-01-29",
+    "burial": "1977",
+    "burial_estimated": true,
+    "bio_url": "https://www.southviewpreservation.com/genevahaugabrooks",
+    "sources": [
+      "https://www.findagrave.com/memorial/60208702/geneva-haugabrooks",
+      "https://aafa.galileo.usg.edu/repositories/2/resources/46"
+    ]
+  },
+  {
+    "id": "graham-w-jackson-sr",
+    "name": "Graham W. Jackson Sr.",
+    "role": "Theatre organist, pianist, accordionist & choral conductor",
+    "birth": "1903-02-22",
+    "death": "1983-01-15",
+    "burial": "1983",
+    "burial_estimated": true,
+    "bio_url": "https://www.southviewpreservation.com/grahamwjacksonsr",
+    "sources": [
+      "https://www.findagrave.com/memorial/9794/graham-washington-jackson",
+      "https://en.wikipedia.org/wiki/Graham_W._Jackson_Sr."
+    ]
+  },
+  {
+    "id": "benjamin-e-mays",
+    "name": "Benjamin E. Mays",
+    "role": "Civil rights leader",
+    "birth": "1894-08-01",
+    "death": "1984-03-28",
+    "burial": "1984-03-31",
+    "burial_estimated": false,
+    "note": "Reinterred at Morehouse College in 1995",
+    "bio_url": "https://www.southviewpreservation.com/benjaminemays",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Benjamin_Mays",
+      "https://gahistoricnewspapers.galileo.usg.edu/lccn/sn88054027/1984-04-07/ed-1/seq-1/"
+    ]
+  },
+  {
+    "id": "bazoline-e-usher",
+    "name": "Bazoline E. Usher",
+    "role": "Educator",
+    "birth": "1885-12-26",
+    "death": "1992-02-08",
+    "burial": "1992",
+    "burial_estimated": true,
+    "bio_url": "https://www.southviewpreservation.com/bazolineeusher",
+    "sources": [
+      "https://www.findagrave.com/memorial/147623924/bazoline-estelle-usher",
+      "https://en.wikipedia.org/wiki/Bazoline_Estelle_Usher"
+    ]
+  },
+  {
+    "id": "grace-towns-hamilton",
+    "name": "Grace Towns Hamilton",
+    "role": "American politician",
+    "birth": "1907-02-10",
+    "death": "1992-06-17",
+    "burial": "1992",
+    "burial_estimated": true,
+    "bio_url": "https://www.southviewpreservation.com/gracetownshamilton",
+    "sources": [
+      "https://www.findagrave.com/memorial/89652703/grace-hamilton",
+      "https://en.wikipedia.org/wiki/Grace_Towns_Hamilton"
+    ]
+  },
+  {
+    "id": "jean-childs-young",
+    "name": "Jean Childs Young",
+    "role": "Educator & children's rights activist",
+    "birth": "1933-07-01",
+    "death": "1994-09-16",
+    "burial": "1994-09-19",
+    "burial_estimated": false,
+    "bio_url": "https://www.southviewpreservation.com/jeanchildsyoung",
+    "sources": [
+      "https://www.findagrave.com/memorial/95181069/jean-young",
+      "https://dlg.usg.edu/record/aarl_afpc_youngjeanchilds19940919"
+    ]
+  },
+  {
+    "id": "annie-l-mcpheeters",
+    "name": "Annie L. McPheeters",
+    "role": "Librarian & civil rights activist",
+    "birth": "1908-02-22",
+    "death": "1994-12-23",
+    "burial": "1994-12-29",
+    "burial_estimated": false,
+    "bio_url": "https://www.southviewpreservation.com/annielmcpheeters",
+    "sources": [
+      "https://www.findagrave.com/memorial/123024158/annie-lou-mcpheeters",
+      "https://dlg.usg.edu/record/aarl_afpc_mcpheetersanniel19941229"
+    ]
+  },
+  {
+    "id": "freddye-henderson",
+    "name": "Freddye Henderson",
+    "role": "Entrepreneur, columnist & educator",
+    "birth": "1917-02-18",
+    "death": "2007-01-19",
+    "burial": "2007-01-24",
+    "burial_estimated": false,
+    "bio_url": "https://www.southviewpreservation.com/freddyehenderson",
+    "sources": [
+      "https://www.findagrave.com/memorial/139192446/freddye-henderson",
+      "https://dlg.usg.edu/record/aarl_afpc_hendersonfreddyescarborough20070124"
+    ]
+  },
+  {
+    "id": "carolyn-d-yancey",
+    "name": "Carolyn D. Yancey",
+    "role": "Teacher & education executive",
+    "birth": "1921-02-10",
+    "death": "2010-11-11",
+    "burial": "2010",
+    "burial_estimated": true,
+    "bio_url": "https://www.southviewpreservation.com/carolyndyancey",
+    "sources": [
+      "https://www.findagrave.com/memorial/97296707/carolyn-yancey",
+      "https://www.ajc.com/news/local/carolyn-marge-yancey-educator-civic-volunteer/5g7b5b5hnwo0jjUJqPPlkL"
+    ]
+  },
+  {
+    "id": "lillian-miles-lewis",
+    "name": "Lillian Miles Lewis",
+    "role": "Educator & political figure",
+    "birth": "1939-03-03",
+    "death": "2012-12-31",
+    "burial": "2013-01-07",
+    "burial_estimated": false,
+    "bio_url": "https://www.southviewpreservation.com/lillianmileslewis",
+    "sources": [
+      "https://www.findagrave.com/memorial/103180144/lillian-may-lewis",
+      "https://www.ajc.com/news/local/funeral-set-for-lillian-miles-lewis-wife-rep-john-lewis/5aUSzR1ennsfzYDQacyA3H/"
+    ]
+  },
+  {
+    "id": "john-lewis",
+    "name": "John Lewis",
+    "role": "Civil rights activist & statesman",
+    "birth": "1940-02-21",
+    "death": "2020-07-17",
+    "burial": "2020-07-30",
+    "burial_estimated": false,
+    "bio_url": "https://www.southviewpreservation.com/johnlewis",
+    "sources": [
+      "https://www.findagrave.com/memorial/213141171/john-lewis",
+      "https://www.ajc.com/news/what-to-know-about-the-place-where-john-lewis-will-be-buried/B5PFWUGC25C55I4EH7SKXO27BE"
+    ]
+  }
+]
