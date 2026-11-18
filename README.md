@@ -119,6 +119,7 @@ src/
 │   ├── memorials.json       # Find a Grave memorial counts by timeline year
 │   ├── individuals.json     # not shown
 │   ├── supporters.json      # sponsors and donors
+|   ├── notable_figures.json # notable figure information to display
 │   └── events.json          # historical events (not displayed)
 ├── views/
 │   ├── MapView.tsx          # Leaflet map, timeline, legend and footprint rings
