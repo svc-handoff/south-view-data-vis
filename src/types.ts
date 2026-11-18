@@ -80,9 +80,12 @@ export type SupporterCategory =
   | 'Individual'
 
 export interface Contribution {
-  year: number
-  /** USD; null for in-kind or unreported support */
+  /** null when the form's year was blank or unreadable */
+  year: number | null
+  /** USD; null when no dollar figure could be read */
   amount: number | null
+  /** true when the amount was left blank on purpose (in-kind support) */
+  inKind: boolean
   purpose: string
 }
 
@@ -94,13 +97,15 @@ export interface Source {
 export interface Supporter {
   id: string
   name: string
-  category: SupporterCategory
-  relationship: 'donor' | 'sponsor'
+  /** null when the form's category was blank or not one we recognise */
+  category: SupporterCategory | null
+  /** null when the form's type was blank or not recognised */
+  relationship: 'donor' | 'sponsor' | null
   description: string
+  /** Donation year of the supporter's earliest submission */
+  supportingSince: number | null
   contributions: Contribution[]
   /** true only when the support is confirmed by a public source listed in `sources` */
   verified: boolean
   sources?: Source[]
 }
-
-

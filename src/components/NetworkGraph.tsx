@@ -2,9 +2,8 @@ import * as d3 from 'd3'
 import { MaximizeIcon, MinusIcon, PlusIcon } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { supporters } from '@/data'
 import { useIsLandscape, useIsMobile, useIsTouch } from '@/hooks/useIsMobile'
-import { CATEGORIES, CATEGORY_STYLES, CEMETERY_ID, formatUSD, totalGiving } from '@/lib/supporters'
+import { categoryOrder, categoryStyle, CEMETERY_ID, formatTotal, relationshipLabel, totalGiving } from '@/lib/supporters'
 import type { Supporter } from '@/types'
 
 export interface Selection {
@@ -58,7 +57,10 @@ function sameView(a: d3.ZoomTransform, b: d3.ZoomTransform) {
   return Math.abs(a.k - b.k) < 0.001 && Math.abs(a.x - b.x) < 1 && Math.abs(a.y - b.y) < 1
 }
 
-function buildGraph({ rings, xStretch, yStretch }: typeof DESKTOP_LAYOUT): { nodes: GraphNode[]; links: GraphLink[] } {
+function buildGraph(
+  supporters: Supporter[],
+  { rings, xStretch, yStretch }: typeof DESKTOP_LAYOUT,
+): { nodes: GraphNode[]; links: GraphLink[] } {
   // The cemetery is pinned at the centre; every supporter links to it
   const hub: HubNode = { id: CEMETERY_ID, type: 'hub', name: 'South-View Cemetery', fx: 0, fy: 0 }
   const nodes: GraphNode[] = [hub]
@@ -66,7 +68,7 @@ function buildGraph({ rings, xStretch, yStretch }: typeof DESKTOP_LAYOUT): { nod
 
   // Group by type so colours cluster around the ring, biggest supporters first within a type
   const ordered = [...supporters].sort(
-    (a, b) => CATEGORIES.indexOf(a.category) - CATEGORIES.indexOf(b.category) || totalGiving(b) - totalGiving(a),
+    (a, b) => categoryOrder(a.category) - categoryOrder(b.category) || totalGiving(b) - totalGiving(a),
   )
   ordered.forEach((s, i) => {
     const total = totalGiving(s)
@@ -78,7 +80,7 @@ function buildGraph({ rings, xStretch, yStretch }: typeof DESKTOP_LAYOUT): { nod
     links.push({
       source: s.id,
       target: CEMETERY_ID,
-      label: total > 0 ? formatUSD(total) : 'In-kind',
+      label: formatTotal(s),
       dashed: s.relationship === 'sponsor',
     })
   })
@@ -105,17 +107,18 @@ interface HoverState {
   meta: string
 }
 
-function nodeMeta(d: GraphNode) {
-  if (d.type === 'hub') return `Est. 1886 · ${supporters.length} supporters`
-  const role = d.data.relationship === 'sponsor' ? 'Sponsor' : 'Donor'
-  return `${d.data.category} · ${role} · ${d.total > 0 ? formatUSD(d.total) : 'In-kind'}`
+function nodeMeta(d: GraphNode, supporterCount: number) {
+  if (d.type === 'hub') return `Est. 1886 · ${supporterCount} supporters`
+  return [d.data.category, relationshipLabel(d.data), formatTotal(d.data)].filter(Boolean).join(' · ')
 }
 
 export default function NetworkGraph({
+  supporters,
   selection,
   onSelect,
   onPress,
 }: {
+  supporters: Supporter[]
   selection: Selection | null
   onSelect: (id: string | null) => void
   /** Any press on the canvas; d3's touch handling hides these from outside-click detection */
@@ -145,8 +148,8 @@ export default function NetworkGraph({
     onSelectRef.current = onSelect
   }, [onSelect])
 
-  // Build the graph once. Selection and resize never rebuild it, so the layout stays
-  // put while people explore.
+  // Build the graph once per data change. Selection and resize never rebuild it, so the layout
+  // stays put while people explore.
   useEffect(() => {
     const svgEl = svgRef.current
     const container = containerRef.current
@@ -155,7 +158,7 @@ export default function NetworkGraph({
     const svg = d3.select(svgEl)
     svg.selectAll('*').remove()
 
-    const { nodes, links } = buildGraph(layout)
+    const { nodes, links } = buildGraph(supporters, layout)
     const maxTotal = d3.max(nodes, (n) => (n.type === 'supporter' ? n.total : 0)) || 1
     const sizeScale = d3.scaleSqrt().domain([0, maxTotal]).range([8, 22])
     const radius = (d: GraphNode) => (d.type === 'hub' ? HUB_RADIUS : sizeScale(d.total))
@@ -242,7 +245,7 @@ export default function NetworkGraph({
         .attr('r', r + 5)
         .attr('stroke-width', 2)
       el.append('circle')
-        .attr('class', `${d.type === 'hub' ? 'fill-primary' : CATEGORY_STYLES[d.data.category].fill} stroke-background`)
+        .attr('class', `${d.type === 'hub' ? 'fill-primary' : categoryStyle(d.data.category).fill} stroke-background`)
         .attr('r', r)
         .attr('stroke-width', 2)
 
@@ -314,7 +317,7 @@ export default function NetworkGraph({
           x: box.left + box.width / 2 - host.left,
           y: box.top - host.top,
           name: d.name,
-          meta: nodeMeta(d),
+          meta: nodeMeta(d, supporters.length),
         })
       })
       .on('mouseleave', () => {
@@ -373,9 +376,12 @@ export default function NetworkGraph({
     return () => {
       simulation.stop()
       observer.disconnect()
+      // The hovered node may not survive a data refresh
+      hoverIdRef.current = null
+      setHover(null)
       svg.on('.zoom', null).on('click', null)
     }
-  }, [isMobile, layout])
+  }, [isMobile, layout, supporters])
 
   // Selection is driven from outside (graph clicks, search, detail links)
   useEffect(() => {
