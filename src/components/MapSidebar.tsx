@@ -8,7 +8,6 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import { mapSnapshots, notableFigures } from '@/data'
 import memorials from '@/data/memorials.json'
 import { useIsMobile } from '@/hooks/useIsMobile'
-import { formatPartialDate } from '@/lib/format'
 import type { MapSnapshot } from '@/types'
 
 const memorialCounts = memorials.counts as Record<string, { count: number; scope: string }>
@@ -121,7 +120,7 @@ export default function MapSidebar({
                     {figure.name}
                   </span>
                   <span className="block text-xs tabular-nums text-muted-foreground">
-                    {formatPartialDate(figure.birth)} – {formatPartialDate(figure.death)}
+                    {figure.birth.slice(0, 4)}–{figure.death.slice(0, 4)}
                   </span>
                   {figure.note && (
                     <span className="block text-xs italic text-muted-foreground">{figure.note}</span>
