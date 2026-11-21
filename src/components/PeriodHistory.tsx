@@ -68,7 +68,7 @@ export default function PeriodHistory({ year, landNote }: { year: number; landNo
     <div className="border-t pt-4">
       <h3 className="mb-1 font-medium text-foreground">Land at this point in the timeline</h3>
       <p>{landNote}</p>
-      <p className="mt-2 text-xs">Land note based on the project’s interpretation of historical plats and deeds; the source images are not included in this project.</p>
+      <p className="mt-2 text-xs">Land note based on the project’s interpretation of historical plats and deeds.</p>
     </div>
   </div>
 }
