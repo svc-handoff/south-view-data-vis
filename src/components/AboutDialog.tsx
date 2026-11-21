@@ -42,8 +42,8 @@ export default function AboutDialog() {
             </p>
           </div>
           <p className="rounded-md border bg-muted/50 p-3 text-muted-foreground">
-            Most names, biographies, statistics and supporters shown are cross-refrenced data for 
-            demonstration. Supporters marked 'Verified' are confirmed by public sources.
+            The names, biographies, statistics and supporters shown are cross-refrenced data for 
+            data visualization. Supporters marked 'Verified' are confirmed by public sources.
           </p>
         </div>
       </DialogContent>
